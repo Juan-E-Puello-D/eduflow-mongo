@@ -25,14 +25,7 @@ const Login: React.FC<LoginProps> = ({ onNavigateToRegister }) => {
 
     setLoading(true);
     try {
-      // TODO: reemplaza con tu llamada real a la API
-      // const res = await fetch('/api/auth/login', { method: 'POST', ... });
-      // const data = await res.json();
-      // login(data.user.name, data.user.role);
-
-      // Simulación: detecta rol por email para pruebas
-      const inferredRole = email.includes('instructor') ? 'instructor' : 'student';
-      login("Ana Gómez", inferredRole);
+      await login(email, password);
     } catch {
       setError('Credenciales incorrectas. Intenta de nuevo.');
     } finally {

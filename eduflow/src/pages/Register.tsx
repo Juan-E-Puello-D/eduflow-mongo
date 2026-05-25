@@ -8,7 +8,7 @@ interface RegisterProps {
 }
 
 const Register: React.FC<RegisterProps> = ({ onNavigateToLogin }) => {
-  const { login } = useAuth();
+  const { register, setActiveTab } = useAuth();
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -63,11 +63,7 @@ const Register: React.FC<RegisterProps> = ({ onNavigateToLogin }) => {
 
     setLoading(true);
     try {
-      // TODO: reemplaza con tu llamada real a la API
-      // const res = await fetch('/api/auth/register', { method: 'POST', ... });
-      // const data = await res.json();
-      // login(data.user.name, data.user.role);
-
+      await register(name, email, password, role === 'student' ? 'estudiante' : 'instructor');
       setSuccess(true);
     } catch {
       setError('No se pudo crear la cuenta. Intenta de nuevo.');
@@ -96,7 +92,7 @@ const Register: React.FC<RegisterProps> = ({ onNavigateToLogin }) => {
             type="button"
             className="btn text-white fw-semibold px-4"
             style={{ background: 'rgba(255,255,255,0.15)', borderRadius: 12, border: '1px solid rgba(255,255,255,0.2)' }}
-            onClick={() => { login(name, role); }}
+            onClick={() => setActiveTab('home')}
           >
             <i className="bi bi-house me-2" />
             Ir al inicio
@@ -126,7 +122,7 @@ const Register: React.FC<RegisterProps> = ({ onNavigateToLogin }) => {
               <div
                 className="d-inline-flex align-items-center gap-2 mb-3"
                 style={{ cursor: 'pointer' }}
-                onClick={() => { login(name, role); }}
+                onClick={() => setActiveTab('home')}
               >
                 <div
                   className="d-flex align-items-center justify-content-center rounded-3"
