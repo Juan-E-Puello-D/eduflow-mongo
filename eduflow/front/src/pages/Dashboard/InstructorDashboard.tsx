@@ -6,7 +6,7 @@ import {
 } from "lucide-react";
 import { useAuth } from "../../context/AuthContext";
 import { CourseCard } from "../../components/CourseCardShared";
-import { getCursos } from "../../services/cursosService";
+import { getCursos, getCursoById } from "../../services/cursosService";
 import { getInscripciones } from "../../services/inscripcionesService";
 import type { Curso } from "../../types/models";
 import CreateCursoModal from "../../components/Dashboard/Instructor/CreateCursoModal";
@@ -68,8 +68,13 @@ const InstructorDashboard: React.FC = () => {
     { label: "Valoración media", value: avgRating,      icon: Star,        color: "#8b5cf6", bg: "#f5f3ff" },
   ];
 
-  const openEdit = (curso: Curso) => {
-    setEditTarget(curso);
+  const openEdit = async (curso: Curso) => {
+    try {
+      const fullCurso = await getCursoById(curso._id);
+      setEditTarget(fullCurso);
+    } catch {
+      setEditTarget(curso);
+    }
   };
 
   const closeEdit = () => {

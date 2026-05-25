@@ -134,6 +134,13 @@ const EditCursoModal: React.FC<EditCursoModalProps> = ({
     }));
   };
 
+  const generateTempLessonId = () => {
+    if (typeof crypto !== "undefined" && typeof crypto.randomUUID === "function") {
+      return crypto.randomUUID();
+    }
+    return `temp-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+  };
+
   const saveLesson = () => {
     if (!form.editingLesson) return;
     
@@ -151,9 +158,9 @@ const EditCursoModal: React.FC<EditCursoModalProps> = ({
         showLessonForm: false
       }));
     } else {
-      // Agregando nueva lección (sin _id, el servidor lo asignará)
+      // Agregando nueva lección con ID temporal para poder editarla/eliminarla en UI
       const newLeccion: Leccion = {
-        _id: "",  // Sin ID, será asignado por el servidor
+        _id: generateTempLessonId(),
         titulo: form.editingLesson.titulo,
         videoUrl: form.editingLesson.videoUrl,
         duracion: form.editingLesson.duracion,

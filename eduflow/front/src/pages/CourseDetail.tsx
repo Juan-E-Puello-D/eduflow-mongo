@@ -314,6 +314,19 @@ const CourseDetail: FC = () => {
                           <Clock size={14} />
                           <span>{leccion.duracion} min</span>
                         </div>
+                        {isEnrolled && leccion.videoUrl && (
+                          <div className="mt-2">
+                            <a
+                              href={leccion.videoUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="d-inline-flex align-items-center gap-1 text-primary"
+                            >
+                              <PlayCircle size={14} />
+                              Ver video
+                            </a>
+                          </div>
+                        )}
                       </div>
 
                       <div className="d-flex align-items-center gap-2 mt-3 mt-md-0">
