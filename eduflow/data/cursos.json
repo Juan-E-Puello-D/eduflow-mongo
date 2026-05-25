@@ -1,0 +1,1984 @@
+[
+  {
+    "_id": {
+      "$oid": "6a13d527734767dec4f0a955"
+    },
+    "titulo": "Node.js desde cero",
+    "descripcion": "Automatiza el ciclo de vida de tus deployments con herramientas de DevOps.",
+    "instructorId": {
+      "$oid": "6a13d527734767dec4f0a56d"
+    },
+    "categoria": "Marketing",
+    "precio": 71,
+    "etiquetas": [
+      "productividad",
+      "react",
+      "docker"
+    ],
+    "duracionTotal": 57,
+    "fechaCreacion": {
+      "$date": "2024-01-20T09:08:27.773Z"
+    },
+    "lecciones": [
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a956"
+        },
+        "titulo": "Lección 1: Resumen",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a955/leccion-1.mp4",
+        "duracion": 7,
+        "orden": 1,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a955/leccion-1"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a957"
+        },
+        "titulo": "Lección 2: Resumen",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a955/leccion-2.mp4",
+        "duracion": 16,
+        "orden": 2,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a955/leccion-2"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a958"
+        },
+        "titulo": "Lección 3: Práctica",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a955/leccion-3.mp4",
+        "duracion": 9,
+        "orden": 3,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a955/leccion-3"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a959"
+        },
+        "titulo": "Lección 4: Proyecto",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a955/leccion-4.mp4",
+        "duracion": 16,
+        "orden": 4,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a955/leccion-4"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a95a"
+        },
+        "titulo": "Lección 5: Herramientas",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a955/leccion-5.mp4",
+        "duracion": 9,
+        "orden": 5,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a955/leccion-5"
+        ]
+      }
+    ],
+    "nivel": "Básico",
+    "publicado": true
+  },
+  {
+    "_id": {
+      "$oid": "6a13d527734767dec4f0a95b"
+    },
+    "titulo": "MongoDB Avanzado",
+    "descripcion": "Aprende los fundamentos y prácticas reales para construir aplicaciones modernas.",
+    "instructorId": {
+      "$oid": "6a13d527734767dec4f0a56e"
+    },
+    "categoria": "Data Science",
+    "precio": 0,
+    "etiquetas": [
+      "docker",
+      "react"
+    ],
+    "duracionTotal": 99,
+    "fechaCreacion": {
+      "$date": "2023-07-18T04:10:57.152Z"
+    },
+    "lecciones": [
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a95c"
+        },
+        "titulo": "Lección 1: Práctica",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a95b/leccion-1.mp4",
+        "duracion": 18,
+        "orden": 1,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a95b/leccion-1"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a95d"
+        },
+        "titulo": "Lección 2: Tips avanzados",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a95b/leccion-2.mp4",
+        "duracion": 10,
+        "orden": 2,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a95b/leccion-2"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a95e"
+        },
+        "titulo": "Lección 3: Resumen",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a95b/leccion-3.mp4",
+        "duracion": 11,
+        "orden": 3,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a95b/leccion-3"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a95f"
+        },
+        "titulo": "Lección 4: Práctica",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a95b/leccion-4.mp4",
+        "duracion": 16,
+        "orden": 4,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a95b/leccion-4"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a960"
+        },
+        "titulo": "Lección 5: Estructura",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a95b/leccion-5.mp4",
+        "duracion": 10,
+        "orden": 5,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a95b/leccion-5"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a961"
+        },
+        "titulo": "Lección 6: Introducción",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a95b/leccion-6.mp4",
+        "duracion": 16,
+        "orden": 6,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a95b/leccion-6"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a962"
+        },
+        "titulo": "Lección 7: Práctica",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a95b/leccion-7.mp4",
+        "duracion": 18,
+        "orden": 7,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a95b/leccion-7"
+        ]
+      }
+    ],
+    "nivel": "Intermedio",
+    "publicado": true
+  },
+  {
+    "_id": {
+      "$oid": "6a13d527734767dec4f0a963"
+    },
+    "titulo": "React con TypeScript",
+    "descripcion": "Construye interfaces interactivas con React y componentes reutilizables.",
+    "instructorId": {
+      "$oid": "6a13d527734767dec4f0a56f"
+    },
+    "categoria": "Negocios",
+    "precio": 0,
+    "etiquetas": [
+      "graphql",
+      "express",
+      "ux"
+    ],
+    "duracionTotal": 69,
+    "fechaCreacion": {
+      "$date": "2023-07-23T00:08:50.045Z"
+    },
+    "lecciones": [
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a964"
+        },
+        "titulo": "Lección 1: Resumen",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a963/leccion-1.mp4",
+        "duracion": 8,
+        "orden": 1,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a963/leccion-1"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a965"
+        },
+        "titulo": "Lección 2: Proyecto",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a963/leccion-2.mp4",
+        "duracion": 15,
+        "orden": 2,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a963/leccion-2"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a966"
+        },
+        "titulo": "Lección 3: Tips avanzados",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a963/leccion-3.mp4",
+        "duracion": 10,
+        "orden": 3,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a963/leccion-3"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a967"
+        },
+        "titulo": "Lección 4: Estructura",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a963/leccion-4.mp4",
+        "duracion": 16,
+        "orden": 4,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a963/leccion-4"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a968"
+        },
+        "titulo": "Lección 5: Introducción",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a963/leccion-5.mp4",
+        "duracion": 11,
+        "orden": 5,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a963/leccion-5"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a969"
+        },
+        "titulo": "Lección 6: Práctica",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a963/leccion-6.mp4",
+        "duracion": 9,
+        "orden": 6,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a963/leccion-6"
+        ]
+      }
+    ],
+    "nivel": "Intermedio",
+    "publicado": true
+  },
+  {
+    "_id": {
+      "$oid": "6a13d527734767dec4f0a96a"
+    },
+    "titulo": "Desarrollo Fullstack con MERN",
+    "descripcion": "Domina MongoDB y el modelado NoSQL para proyectos de educación y negocio.",
+    "instructorId": {
+      "$oid": "6a13d527734767dec4f0a570"
+    },
+    "categoria": "Idiomas",
+    "precio": 0,
+    "etiquetas": [
+      "aws",
+      "graphql"
+    ],
+    "duracionTotal": 48,
+    "fechaCreacion": {
+      "$date": "2023-09-20T20:31:06.773Z"
+    },
+    "lecciones": [
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a96b"
+        },
+        "titulo": "Lección 1: Estructura",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a96a/leccion-1.mp4",
+        "duracion": 10,
+        "orden": 1,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a96a/leccion-1"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a96c"
+        },
+        "titulo": "Lección 2: Práctica",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a96a/leccion-2.mp4",
+        "duracion": 12,
+        "orden": 2,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a96a/leccion-2"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a96d"
+        },
+        "titulo": "Lección 3: Tips avanzados",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a96a/leccion-3.mp4",
+        "duracion": 18,
+        "orden": 3,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a96a/leccion-3"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a96e"
+        },
+        "titulo": "Lección 4: Práctica",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a96a/leccion-4.mp4",
+        "duracion": 8,
+        "orden": 4,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a96a/leccion-4"
+        ]
+      }
+    ],
+    "nivel": "Intermedio",
+    "publicado": true
+  },
+  {
+    "_id": {
+      "$oid": "6a13d527734767dec4f0a96f"
+    },
+    "titulo": "APIs REST seguras",
+    "descripcion": "Lleva tus APIs al siguiente nivel con validación, seguridad y escalabilidad.",
+    "instructorId": {
+      "$oid": "6a13d527734767dec4f0a571"
+    },
+    "categoria": "Marketing",
+    "precio": 66,
+    "etiquetas": [
+      "productividad",
+      "mongo",
+      "node"
+    ],
+    "duracionTotal": 56,
+    "fechaCreacion": {
+      "$date": "2023-08-22T23:53:07.345Z"
+    },
+    "lecciones": [
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a970"
+        },
+        "titulo": "Lección 1: Estructura",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a96f/leccion-1.mp4",
+        "duracion": 15,
+        "orden": 1,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a96f/leccion-1"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a971"
+        },
+        "titulo": "Lección 2: Proyecto",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a96f/leccion-2.mp4",
+        "duracion": 11,
+        "orden": 2,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a96f/leccion-2"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a972"
+        },
+        "titulo": "Lección 3: Resumen",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a96f/leccion-3.mp4",
+        "duracion": 17,
+        "orden": 3,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a96f/leccion-3"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a973"
+        },
+        "titulo": "Lección 4: Tips avanzados",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a96f/leccion-4.mp4",
+        "duracion": 13,
+        "orden": 4,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a96f/leccion-4"
+        ]
+      }
+    ],
+    "nivel": "Avanzado",
+    "publicado": true
+  },
+  {
+    "_id": {
+      "$oid": "6a13d527734767dec4f0a974"
+    },
+    "titulo": "Automatización con DevOps",
+    "descripcion": "Construye interfaces interactivas con React y componentes reutilizables.",
+    "instructorId": {
+      "$oid": "6a13d527734767dec4f0a572"
+    },
+    "categoria": "DevOps",
+    "precio": 92,
+    "etiquetas": [
+      "express",
+      "docker",
+      "graphql"
+    ],
+    "duracionTotal": 59,
+    "fechaCreacion": {
+      "$date": "2023-04-29T17:36:24.916Z"
+    },
+    "lecciones": [
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a975"
+        },
+        "titulo": "Lección 1: Tips avanzados",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a974/leccion-1.mp4",
+        "duracion": 8,
+        "orden": 1,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a974/leccion-1"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a976"
+        },
+        "titulo": "Lección 2: Tips avanzados",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a974/leccion-2.mp4",
+        "duracion": 10,
+        "orden": 2,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a974/leccion-2"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a977"
+        },
+        "titulo": "Lección 3: Proyecto",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a974/leccion-3.mp4",
+        "duracion": 8,
+        "orden": 3,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a974/leccion-3"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a978"
+        },
+        "titulo": "Lección 4: Resumen",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a974/leccion-4.mp4",
+        "duracion": 14,
+        "orden": 4,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a974/leccion-4"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a979"
+        },
+        "titulo": "Lección 5: Herramientas",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a974/leccion-5.mp4",
+        "duracion": 11,
+        "orden": 5,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a974/leccion-5"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a97a"
+        },
+        "titulo": "Lección 6: Estructura",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a974/leccion-6.mp4",
+        "duracion": 8,
+        "orden": 6,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a974/leccion-6"
+        ]
+      }
+    ],
+    "nivel": "Intermedio",
+    "publicado": true
+  },
+  {
+    "_id": {
+      "$oid": "6a13d527734767dec4f0a97b"
+    },
+    "titulo": "Análisis de datos con Python",
+    "descripcion": "Aprende los fundamentos y prácticas reales para construir aplicaciones modernas.",
+    "instructorId": {
+      "$oid": "6a13d527734767dec4f0a573"
+    },
+    "categoria": "Idiomas",
+    "precio": 0,
+    "etiquetas": [
+      "node",
+      "docker",
+      "express"
+    ],
+    "duracionTotal": 58,
+    "fechaCreacion": {
+      "$date": "2023-08-15T02:48:40.032Z"
+    },
+    "lecciones": [
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a97c"
+        },
+        "titulo": "Lección 1: Práctica",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a97b/leccion-1.mp4",
+        "duracion": 7,
+        "orden": 1,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a97b/leccion-1"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a97d"
+        },
+        "titulo": "Lección 2: Introducción",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a97b/leccion-2.mp4",
+        "duracion": 17,
+        "orden": 2,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a97b/leccion-2"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a97e"
+        },
+        "titulo": "Lección 3: Resumen",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a97b/leccion-3.mp4",
+        "duracion": 15,
+        "orden": 3,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a97b/leccion-3"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a97f"
+        },
+        "titulo": "Lección 4: Estructura",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a97b/leccion-4.mp4",
+        "duracion": 8,
+        "orden": 4,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a97b/leccion-4"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a980"
+        },
+        "titulo": "Lección 5: Introducción",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a97b/leccion-5.mp4",
+        "duracion": 11,
+        "orden": 5,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a97b/leccion-5"
+        ]
+      }
+    ],
+    "nivel": "Intermedio",
+    "publicado": true
+  },
+  {
+    "_id": {
+      "$oid": "6a13d527734767dec4f0a981"
+    },
+    "titulo": "Diseño de experiencia de usuario",
+    "descripcion": "Optimiza la experiencia de tus estudiantes usando métricas reales de progreso.",
+    "instructorId": {
+      "$oid": "6a13d527734767dec4f0a574"
+    },
+    "categoria": "Programación",
+    "precio": 60,
+    "etiquetas": [
+      "typescript",
+      "node",
+      "react"
+    ],
+    "duracionTotal": 96,
+    "fechaCreacion": {
+      "$date": "2023-09-06T15:35:54.794Z"
+    },
+    "lecciones": [
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a982"
+        },
+        "titulo": "Lección 1: Estructura",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a981/leccion-1.mp4",
+        "duracion": 17,
+        "orden": 1,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a981/leccion-1"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a983"
+        },
+        "titulo": "Lección 2: Proyecto",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a981/leccion-2.mp4",
+        "duracion": 18,
+        "orden": 2,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a981/leccion-2"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a984"
+        },
+        "titulo": "Lección 3: Estructura",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a981/leccion-3.mp4",
+        "duracion": 9,
+        "orden": 3,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a981/leccion-3"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a985"
+        },
+        "titulo": "Lección 4: Herramientas",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a981/leccion-4.mp4",
+        "duracion": 17,
+        "orden": 4,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a981/leccion-4"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a986"
+        },
+        "titulo": "Lección 5: Tips avanzados",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a981/leccion-5.mp4",
+        "duracion": 18,
+        "orden": 5,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a981/leccion-5"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a987"
+        },
+        "titulo": "Lección 6: Práctica",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a981/leccion-6.mp4",
+        "duracion": 17,
+        "orden": 6,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a981/leccion-6"
+        ]
+      }
+    ],
+    "nivel": "Intermedio",
+    "publicado": true
+  },
+  {
+    "_id": {
+      "$oid": "6a13d527734767dec4f0a988"
+    },
+    "titulo": "Marketing digital para cursos",
+    "descripcion": "Automatiza el ciclo de vida de tus deployments con herramientas de DevOps.",
+    "instructorId": {
+      "$oid": "6a13d527734767dec4f0a575"
+    },
+    "categoria": "Data Science",
+    "precio": 60,
+    "etiquetas": [
+      "docker",
+      "ux",
+      "mongo"
+    ],
+    "duracionTotal": 71,
+    "fechaCreacion": {
+      "$date": "2023-07-01T03:43:13.389Z"
+    },
+    "lecciones": [
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a989"
+        },
+        "titulo": "Lección 1: Proyecto",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a988/leccion-1.mp4",
+        "duracion": 9,
+        "orden": 1,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a988/leccion-1"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a98a"
+        },
+        "titulo": "Lección 2: Introducción",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a988/leccion-2.mp4",
+        "duracion": 18,
+        "orden": 2,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a988/leccion-2"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a98b"
+        },
+        "titulo": "Lección 3: Resumen",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a988/leccion-3.mp4",
+        "duracion": 8,
+        "orden": 3,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a988/leccion-3"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a98c"
+        },
+        "titulo": "Lección 4: Resumen",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a988/leccion-4.mp4",
+        "duracion": 11,
+        "orden": 4,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a988/leccion-4"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a98d"
+        },
+        "titulo": "Lección 5: Resumen",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a988/leccion-5.mp4",
+        "duracion": 8,
+        "orden": 5,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a988/leccion-5"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a98e"
+        },
+        "titulo": "Lección 6: Práctica",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a988/leccion-6.mp4",
+        "duracion": 8,
+        "orden": 6,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a988/leccion-6"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a98f"
+        },
+        "titulo": "Lección 7: Resumen",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a988/leccion-7.mp4",
+        "duracion": 9,
+        "orden": 7,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a988/leccion-7"
+        ]
+      }
+    ],
+    "nivel": "Básico",
+    "publicado": true
+  },
+  {
+    "_id": {
+      "$oid": "6a13d527734767dec4f0a990"
+    },
+    "titulo": "Finanzas personales para emprendedores",
+    "descripcion": "Organiza tu contenido educativo con un modelo de datos híbrido y flexible.",
+    "instructorId": {
+      "$oid": "6a13d527734767dec4f0a576"
+    },
+    "categoria": "Programación",
+    "precio": 37,
+    "etiquetas": [
+      "graphql",
+      "docker",
+      "mongo"
+    ],
+    "duracionTotal": 85,
+    "fechaCreacion": {
+      "$date": "2023-04-23T11:47:40.796Z"
+    },
+    "lecciones": [
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a991"
+        },
+        "titulo": "Lección 1: Tips avanzados",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a990/leccion-1.mp4",
+        "duracion": 12,
+        "orden": 1,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a990/leccion-1"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a992"
+        },
+        "titulo": "Lección 2: Proyecto",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a990/leccion-2.mp4",
+        "duracion": 12,
+        "orden": 2,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a990/leccion-2"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a993"
+        },
+        "titulo": "Lección 3: Proyecto",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a990/leccion-3.mp4",
+        "duracion": 17,
+        "orden": 3,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a990/leccion-3"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a994"
+        },
+        "titulo": "Lección 4: Introducción",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a990/leccion-4.mp4",
+        "duracion": 11,
+        "orden": 4,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a990/leccion-4"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a995"
+        },
+        "titulo": "Lección 5: Herramientas",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a990/leccion-5.mp4",
+        "duracion": 8,
+        "orden": 5,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a990/leccion-5"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a996"
+        },
+        "titulo": "Lección 6: Resumen",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a990/leccion-6.mp4",
+        "duracion": 18,
+        "orden": 6,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a990/leccion-6"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a997"
+        },
+        "titulo": "Lección 7: Proyecto",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a990/leccion-7.mp4",
+        "duracion": 7,
+        "orden": 7,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a990/leccion-7"
+        ]
+      }
+    ],
+    "nivel": "Básico",
+    "publicado": true
+  },
+  {
+    "_id": {
+      "$oid": "6a13d527734767dec4f0a998"
+    },
+    "titulo": "Cloud Computing con AWS",
+    "descripcion": "Aprende los fundamentos y prácticas reales para construir aplicaciones modernas.",
+    "instructorId": {
+      "$oid": "6a13d527734767dec4f0a577"
+    },
+    "categoria": "Idiomas",
+    "precio": 45,
+    "etiquetas": [
+      "ux",
+      "typescript",
+      "productividad"
+    ],
+    "duracionTotal": 108,
+    "fechaCreacion": {
+      "$date": "2023-08-12T23:02:23.919Z"
+    },
+    "lecciones": [
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a999"
+        },
+        "titulo": "Lección 1: Tips avanzados",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a998/leccion-1.mp4",
+        "duracion": 17,
+        "orden": 1,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a998/leccion-1"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a99a"
+        },
+        "titulo": "Lección 2: Introducción",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a998/leccion-2.mp4",
+        "duracion": 18,
+        "orden": 2,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a998/leccion-2"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a99b"
+        },
+        "titulo": "Lección 3: Práctica",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a998/leccion-3.mp4",
+        "duracion": 15,
+        "orden": 3,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a998/leccion-3"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a99c"
+        },
+        "titulo": "Lección 4: Resumen",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a998/leccion-4.mp4",
+        "duracion": 11,
+        "orden": 4,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a998/leccion-4"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a99d"
+        },
+        "titulo": "Lección 5: Estructura",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a998/leccion-5.mp4",
+        "duracion": 13,
+        "orden": 5,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a998/leccion-5"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a99e"
+        },
+        "titulo": "Lección 6: Resumen",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a998/leccion-6.mp4",
+        "duracion": 17,
+        "orden": 6,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a998/leccion-6"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a99f"
+        },
+        "titulo": "Lección 7: Proyecto",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a998/leccion-7.mp4",
+        "duracion": 17,
+        "orden": 7,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a998/leccion-7"
+        ]
+      }
+    ],
+    "nivel": "Avanzado",
+    "publicado": true
+  },
+  {
+    "_id": {
+      "$oid": "6a13d527734767dec4f0a9a0"
+    },
+    "titulo": "Integración continua y despliegue",
+    "descripcion": "Lleva tus APIs al siguiente nivel con validación, seguridad y escalabilidad.",
+    "instructorId": {
+      "$oid": "6a13d527734767dec4f0a578"
+    },
+    "categoria": "Idiomas",
+    "precio": 0,
+    "etiquetas": [
+      "productividad",
+      "node"
+    ],
+    "duracionTotal": 84,
+    "fechaCreacion": {
+      "$date": "2023-05-04T20:34:05.443Z"
+    },
+    "lecciones": [
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a9a1"
+        },
+        "titulo": "Lección 1: Herramientas",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a9a0/leccion-1.mp4",
+        "duracion": 11,
+        "orden": 1,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a9a0/leccion-1"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a9a2"
+        },
+        "titulo": "Lección 2: Estructura",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a9a0/leccion-2.mp4",
+        "duracion": 11,
+        "orden": 2,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a9a0/leccion-2"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a9a3"
+        },
+        "titulo": "Lección 3: Resumen",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a9a0/leccion-3.mp4",
+        "duracion": 15,
+        "orden": 3,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a9a0/leccion-3"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a9a4"
+        },
+        "titulo": "Lección 4: Resumen",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a9a0/leccion-4.mp4",
+        "duracion": 14,
+        "orden": 4,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a9a0/leccion-4"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a9a5"
+        },
+        "titulo": "Lección 5: Proyecto",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a9a0/leccion-5.mp4",
+        "duracion": 14,
+        "orden": 5,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a9a0/leccion-5"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a9a6"
+        },
+        "titulo": "Lección 6: Práctica",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a9a0/leccion-6.mp4",
+        "duracion": 11,
+        "orden": 6,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a9a0/leccion-6"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a9a7"
+        },
+        "titulo": "Lección 7: Resumen",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a9a0/leccion-7.mp4",
+        "duracion": 8,
+        "orden": 7,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a9a0/leccion-7"
+        ]
+      }
+    ],
+    "nivel": "Avanzado",
+    "publicado": true
+  },
+  {
+    "_id": {
+      "$oid": "6a13d527734767dec4f0a9a8"
+    },
+    "titulo": "Migración de datos a MongoDB",
+    "descripcion": "Domina MongoDB y el modelado NoSQL para proyectos de educación y negocio.",
+    "instructorId": {
+      "$oid": "6a13d527734767dec4f0a579"
+    },
+    "categoria": "Finanzas",
+    "precio": 0,
+    "etiquetas": [
+      "react",
+      "typescript",
+      "mongo"
+    ],
+    "duracionTotal": 90,
+    "fechaCreacion": {
+      "$date": "2024-02-18T06:40:39.559Z"
+    },
+    "lecciones": [
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a9a9"
+        },
+        "titulo": "Lección 1: Resumen",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a9a8/leccion-1.mp4",
+        "duracion": 18,
+        "orden": 1,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a9a8/leccion-1"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a9aa"
+        },
+        "titulo": "Lección 2: Introducción",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a9a8/leccion-2.mp4",
+        "duracion": 9,
+        "orden": 2,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a9a8/leccion-2"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a9ab"
+        },
+        "titulo": "Lección 3: Herramientas",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a9a8/leccion-3.mp4",
+        "duracion": 13,
+        "orden": 3,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a9a8/leccion-3"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a9ac"
+        },
+        "titulo": "Lección 4: Resumen",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a9a8/leccion-4.mp4",
+        "duracion": 12,
+        "orden": 4,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a9a8/leccion-4"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a9ad"
+        },
+        "titulo": "Lección 5: Resumen",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a9a8/leccion-5.mp4",
+        "duracion": 9,
+        "orden": 5,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a9a8/leccion-5"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a9ae"
+        },
+        "titulo": "Lección 6: Herramientas",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a9a8/leccion-6.mp4",
+        "duracion": 13,
+        "orden": 6,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a9a8/leccion-6"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a9af"
+        },
+        "titulo": "Lección 7: Proyecto",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a9a8/leccion-7.mp4",
+        "duracion": 16,
+        "orden": 7,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a9a8/leccion-7"
+        ]
+      }
+    ],
+    "nivel": "Básico",
+    "publicado": true
+  },
+  {
+    "_id": {
+      "$oid": "6a13d527734767dec4f0a9b0"
+    },
+    "titulo": "Optimización de aplicaciones web",
+    "descripcion": "Organiza tu contenido educativo con un modelo de datos híbrido y flexible.",
+    "instructorId": {
+      "$oid": "6a13d527734767dec4f0a57a"
+    },
+    "categoria": "Programación",
+    "precio": 0,
+    "etiquetas": [
+      "mongo",
+      "node",
+      "docker"
+    ],
+    "duracionTotal": 74,
+    "fechaCreacion": {
+      "$date": "2023-12-23T09:12:47.109Z"
+    },
+    "lecciones": [
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a9b1"
+        },
+        "titulo": "Lección 1: Tips avanzados",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a9b0/leccion-1.mp4",
+        "duracion": 10,
+        "orden": 1,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a9b0/leccion-1"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a9b2"
+        },
+        "titulo": "Lección 2: Estructura",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a9b0/leccion-2.mp4",
+        "duracion": 13,
+        "orden": 2,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a9b0/leccion-2"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a9b3"
+        },
+        "titulo": "Lección 3: Tips avanzados",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a9b0/leccion-3.mp4",
+        "duracion": 17,
+        "orden": 3,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a9b0/leccion-3"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a9b4"
+        },
+        "titulo": "Lección 4: Proyecto",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a9b0/leccion-4.mp4",
+        "duracion": 7,
+        "orden": 4,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a9b0/leccion-4"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a9b5"
+        },
+        "titulo": "Lección 5: Tips avanzados",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a9b0/leccion-5.mp4",
+        "duracion": 9,
+        "orden": 5,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a9b0/leccion-5"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a9b6"
+        },
+        "titulo": "Lección 6: Herramientas",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a9b0/leccion-6.mp4",
+        "duracion": 11,
+        "orden": 6,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a9b0/leccion-6"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a9b7"
+        },
+        "titulo": "Lección 7: Proyecto",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a9b0/leccion-7.mp4",
+        "duracion": 7,
+        "orden": 7,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a9b0/leccion-7"
+        ]
+      }
+    ],
+    "nivel": "Básico",
+    "publicado": true
+  },
+  {
+    "_id": {
+      "$oid": "6a13d527734767dec4f0a9b8"
+    },
+    "titulo": "Web scraping y ETL",
+    "descripcion": "Optimiza la experiencia de tus estudiantes usando métricas reales de progreso.",
+    "instructorId": {
+      "$oid": "6a13d527734767dec4f0a57b"
+    },
+    "categoria": "DevOps",
+    "precio": 0,
+    "etiquetas": [
+      "mongo",
+      "node",
+      "react"
+    ],
+    "duracionTotal": 77,
+    "fechaCreacion": {
+      "$date": "2023-11-15T03:57:13.892Z"
+    },
+    "lecciones": [
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a9b9"
+        },
+        "titulo": "Lección 1: Resumen",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a9b8/leccion-1.mp4",
+        "duracion": 14,
+        "orden": 1,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a9b8/leccion-1"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a9ba"
+        },
+        "titulo": "Lección 2: Introducción",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a9b8/leccion-2.mp4",
+        "duracion": 17,
+        "orden": 2,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a9b8/leccion-2"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a9bb"
+        },
+        "titulo": "Lección 3: Proyecto",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a9b8/leccion-3.mp4",
+        "duracion": 9,
+        "orden": 3,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a9b8/leccion-3"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a9bc"
+        },
+        "titulo": "Lección 4: Introducción",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a9b8/leccion-4.mp4",
+        "duracion": 13,
+        "orden": 4,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a9b8/leccion-4"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a9bd"
+        },
+        "titulo": "Lección 5: Introducción",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a9b8/leccion-5.mp4",
+        "duracion": 8,
+        "orden": 5,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a9b8/leccion-5"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a9be"
+        },
+        "titulo": "Lección 6: Proyecto",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a9b8/leccion-6.mp4",
+        "duracion": 16,
+        "orden": 6,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a9b8/leccion-6"
+        ]
+      }
+    ],
+    "nivel": "Avanzado",
+    "publicado": true
+  },
+  {
+    "_id": {
+      "$oid": "6a13d527734767dec4f0a9bf"
+    },
+    "titulo": "Narrativa visual para cursos",
+    "descripcion": "Optimiza la experiencia de tus estudiantes usando métricas reales de progreso.",
+    "instructorId": {
+      "$oid": "6a13d527734767dec4f0a57c"
+    },
+    "categoria": "Programación",
+    "precio": 0,
+    "etiquetas": [
+      "express",
+      "productividad",
+      "typescript"
+    ],
+    "duracionTotal": 76,
+    "fechaCreacion": {
+      "$date": "2023-10-31T11:03:45.428Z"
+    },
+    "lecciones": [
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a9c0"
+        },
+        "titulo": "Lección 1: Introducción",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a9bf/leccion-1.mp4",
+        "duracion": 16,
+        "orden": 1,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a9bf/leccion-1"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a9c1"
+        },
+        "titulo": "Lección 2: Tips avanzados",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a9bf/leccion-2.mp4",
+        "duracion": 8,
+        "orden": 2,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a9bf/leccion-2"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a9c2"
+        },
+        "titulo": "Lección 3: Tips avanzados",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a9bf/leccion-3.mp4",
+        "duracion": 14,
+        "orden": 3,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a9bf/leccion-3"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a9c3"
+        },
+        "titulo": "Lección 4: Herramientas",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a9bf/leccion-4.mp4",
+        "duracion": 14,
+        "orden": 4,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a9bf/leccion-4"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a9c4"
+        },
+        "titulo": "Lección 5: Tips avanzados",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a9bf/leccion-5.mp4",
+        "duracion": 17,
+        "orden": 5,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a9bf/leccion-5"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a9c5"
+        },
+        "titulo": "Lección 6: Proyecto",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a9bf/leccion-6.mp4",
+        "duracion": 7,
+        "orden": 6,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a9bf/leccion-6"
+        ]
+      }
+    ],
+    "nivel": "Intermedio",
+    "publicado": true
+  },
+  {
+    "_id": {
+      "$oid": "6a13d527734767dec4f0a9c6"
+    },
+    "titulo": "Metodologías ágiles en proyectos",
+    "descripcion": "Domina MongoDB y el modelado NoSQL para proyectos de educación y negocio.",
+    "instructorId": {
+      "$oid": "6a13d527734767dec4f0a57d"
+    },
+    "categoria": "Programación",
+    "precio": 68,
+    "etiquetas": [
+      "docker",
+      "react"
+    ],
+    "duracionTotal": 83,
+    "fechaCreacion": {
+      "$date": "2023-11-28T13:15:16.420Z"
+    },
+    "lecciones": [
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a9c7"
+        },
+        "titulo": "Lección 1: Proyecto",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a9c6/leccion-1.mp4",
+        "duracion": 16,
+        "orden": 1,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a9c6/leccion-1"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a9c8"
+        },
+        "titulo": "Lección 2: Tips avanzados",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a9c6/leccion-2.mp4",
+        "duracion": 14,
+        "orden": 2,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a9c6/leccion-2"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a9c9"
+        },
+        "titulo": "Lección 3: Introducción",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a9c6/leccion-3.mp4",
+        "duracion": 13,
+        "orden": 3,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a9c6/leccion-3"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a9ca"
+        },
+        "titulo": "Lección 4: Práctica",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a9c6/leccion-4.mp4",
+        "duracion": 12,
+        "orden": 4,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a9c6/leccion-4"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a9cb"
+        },
+        "titulo": "Lección 5: Tips avanzados",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a9c6/leccion-5.mp4",
+        "duracion": 13,
+        "orden": 5,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a9c6/leccion-5"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a9cc"
+        },
+        "titulo": "Lección 6: Resumen",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a9c6/leccion-6.mp4",
+        "duracion": 15,
+        "orden": 6,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a9c6/leccion-6"
+        ]
+      }
+    ],
+    "nivel": "Intermedio",
+    "publicado": true
+  },
+  {
+    "_id": {
+      "$oid": "6a13d527734767dec4f0a9cd"
+    },
+    "titulo": "Gestión de proyectos educativos",
+    "descripcion": "Optimiza la experiencia de tus estudiantes usando métricas reales de progreso.",
+    "instructorId": {
+      "$oid": "6a13d527734767dec4f0a57e"
+    },
+    "categoria": "Idiomas",
+    "precio": 0,
+    "etiquetas": [
+      "productividad",
+      "express"
+    ],
+    "duracionTotal": 92,
+    "fechaCreacion": {
+      "$date": "2023-03-01T11:52:05.432Z"
+    },
+    "lecciones": [
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a9ce"
+        },
+        "titulo": "Lección 1: Resumen",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a9cd/leccion-1.mp4",
+        "duracion": 18,
+        "orden": 1,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a9cd/leccion-1"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a9cf"
+        },
+        "titulo": "Lección 2: Tips avanzados",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a9cd/leccion-2.mp4",
+        "duracion": 11,
+        "orden": 2,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a9cd/leccion-2"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a9d0"
+        },
+        "titulo": "Lección 3: Resumen",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a9cd/leccion-3.mp4",
+        "duracion": 9,
+        "orden": 3,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a9cd/leccion-3"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a9d1"
+        },
+        "titulo": "Lección 4: Tips avanzados",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a9cd/leccion-4.mp4",
+        "duracion": 11,
+        "orden": 4,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a9cd/leccion-4"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a9d2"
+        },
+        "titulo": "Lección 5: Herramientas",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a9cd/leccion-5.mp4",
+        "duracion": 10,
+        "orden": 5,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a9cd/leccion-5"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a9d3"
+        },
+        "titulo": "Lección 6: Tips avanzados",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a9cd/leccion-6.mp4",
+        "duracion": 16,
+        "orden": 6,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a9cd/leccion-6"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a9d4"
+        },
+        "titulo": "Lección 7: Herramientas",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a9cd/leccion-7.mp4",
+        "duracion": 17,
+        "orden": 7,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a9cd/leccion-7"
+        ]
+      }
+    ],
+    "nivel": "Intermedio",
+    "publicado": true
+  },
+  {
+    "_id": {
+      "$oid": "6a13d527734767dec4f0a9d5"
+    },
+    "titulo": "Estrategias pedagógicas digitales",
+    "descripcion": "Automatiza el ciclo de vida de tus deployments con herramientas de DevOps.",
+    "instructorId": {
+      "$oid": "6a13d527734767dec4f0a57f"
+    },
+    "categoria": "Diseño",
+    "precio": 0,
+    "etiquetas": [
+      "graphql",
+      "productividad"
+    ],
+    "duracionTotal": 96,
+    "fechaCreacion": {
+      "$date": "2023-05-30T17:19:45.914Z"
+    },
+    "lecciones": [
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a9d6"
+        },
+        "titulo": "Lección 1: Herramientas",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a9d5/leccion-1.mp4",
+        "duracion": 10,
+        "orden": 1,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a9d5/leccion-1"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a9d7"
+        },
+        "titulo": "Lección 2: Introducción",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a9d5/leccion-2.mp4",
+        "duracion": 18,
+        "orden": 2,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a9d5/leccion-2"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a9d8"
+        },
+        "titulo": "Lección 3: Práctica",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a9d5/leccion-3.mp4",
+        "duracion": 14,
+        "orden": 3,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a9d5/leccion-3"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a9d9"
+        },
+        "titulo": "Lección 4: Introducción",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a9d5/leccion-4.mp4",
+        "duracion": 18,
+        "orden": 4,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a9d5/leccion-4"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a9da"
+        },
+        "titulo": "Lección 5: Proyecto",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a9d5/leccion-5.mp4",
+        "duracion": 11,
+        "orden": 5,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a9d5/leccion-5"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a9db"
+        },
+        "titulo": "Lección 6: Práctica",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a9d5/leccion-6.mp4",
+        "duracion": 8,
+        "orden": 6,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a9d5/leccion-6"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a9dc"
+        },
+        "titulo": "Lección 7: Práctica",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a9d5/leccion-7.mp4",
+        "duracion": 17,
+        "orden": 7,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a9d5/leccion-7"
+        ]
+      }
+    ],
+    "nivel": "Básico",
+    "publicado": true
+  },
+  {
+    "_id": {
+      "$oid": "6a13d527734767dec4f0a9dd"
+    },
+    "titulo": "Seguridad y buenas prácticas web",
+    "descripcion": "Automatiza el ciclo de vida de tus deployments con herramientas de DevOps.",
+    "instructorId": {
+      "$oid": "6a13d527734767dec4f0a580"
+    },
+    "categoria": "Negocios",
+    "precio": 32,
+    "etiquetas": [
+      "react",
+      "aws",
+      "express"
+    ],
+    "duracionTotal": 83,
+    "fechaCreacion": {
+      "$date": "2024-01-07T07:45:07.255Z"
+    },
+    "lecciones": [
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a9de"
+        },
+        "titulo": "Lección 1: Estructura",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a9dd/leccion-1.mp4",
+        "duracion": 15,
+        "orden": 1,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a9dd/leccion-1"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a9df"
+        },
+        "titulo": "Lección 2: Práctica",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a9dd/leccion-2.mp4",
+        "duracion": 7,
+        "orden": 2,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a9dd/leccion-2"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a9e0"
+        },
+        "titulo": "Lección 3: Estructura",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a9dd/leccion-3.mp4",
+        "duracion": 16,
+        "orden": 3,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a9dd/leccion-3"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a9e1"
+        },
+        "titulo": "Lección 4: Práctica",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a9dd/leccion-4.mp4",
+        "duracion": 14,
+        "orden": 4,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a9dd/leccion-4"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a9e2"
+        },
+        "titulo": "Lección 5: Resumen",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a9dd/leccion-5.mp4",
+        "duracion": 9,
+        "orden": 5,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a9dd/leccion-5"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a9e3"
+        },
+        "titulo": "Lección 6: Proyecto",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a9dd/leccion-6.mp4",
+        "duracion": 14,
+        "orden": 6,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a9dd/leccion-6"
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6a13d527734767dec4f0a9e4"
+        },
+        "titulo": "Lección 7: Tips avanzados",
+        "videoUrl": "https://videos.eduflow.com/6a13d527734767dec4f0a9dd/leccion-7.mp4",
+        "duracion": 8,
+        "orden": 7,
+        "recursos": [
+          "https://docs.eduflow.com/cursos/6a13d527734767dec4f0a9dd/leccion-7"
+        ]
+      }
+    ],
+    "nivel": "Intermedio",
+    "publicado": true
+  }
+]
