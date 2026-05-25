@@ -3,6 +3,7 @@ import type { Usuario } from "../types/models";
 
 interface AuthResponse {
   user: Usuario;
+  token: string;
 }
 
 export const login = async (email: string, password: string): Promise<AuthResponse> => {

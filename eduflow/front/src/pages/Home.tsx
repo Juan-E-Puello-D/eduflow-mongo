@@ -1,7 +1,8 @@
 import { useEffect, useState, type FC } from "react";
 import { Container, Row, Col, Button, Card, Badge, Spinner } from "react-bootstrap";
 import { GraduationCap, PlayCircle, Star, Users, Clock, ArrowRight, BookOpen } from "lucide-react";
-import { getCourses, type Course } from "../services/courseService";
+import { getCursos } from "../services/cursosService";
+import type { Curso as Course } from "../types/models";
 import { useAuth } from "../context/AuthContext";
 
 // Skeleton card mientras carga
@@ -44,11 +45,13 @@ const categoryIconColor = (cat: string): string => {
 
 const CourseCard: FC<{ course: Course }> = ({ course }) => {
   const [hovered, setHovered] = useState(false);
-  const cat = course.category ?? (course as any).cat ?? "General";
-  const price = course.price ?? "Gratis";
-  const rating = (course as any).rating ?? (3.8 + Math.random() * 1.2).toFixed(1);
-  const students = (course as any).students ?? Math.floor(Math.random() * 2000 + 300);
-  const duration = (course as any).duration ?? `${Math.floor(Math.random() * 20 + 5)}h`;
+  const cat = course.categoria ?? "General";
+  const price = course.precio === 0 ? "Gratis" : `$${course.precio}`;
+  const rating = (3.8 + Math.random() * 1.2).toFixed(1);
+  const students = Math.floor(Math.random() * 2000 + 300);
+  const duration = `${Math.floor((course.duracionTotal ?? 0) / 60) || Math.floor(Math.random() * 20 + 5)}h`;
+  const title = course.titulo;
+  const instructor = course.instructorId;
 
   return (
     <Card
@@ -95,11 +98,11 @@ const CourseCard: FC<{ course: Course }> = ({ course }) => {
       <Card.Body className="p-4 d-flex flex-column">
         {/* Título */}
         <Card.Title className="fw-bold mb-1" style={{ fontSize: "1rem", lineHeight: 1.35, color: "#0f172a" }}>
-          {course.title}
+          {title}
         </Card.Title>
         <p className="text-muted mb-3" style={{ fontSize: "0.82rem" }}>
           <BookOpen size={12} className="me-1" />
-          Por {course.instructor}
+          {course.nivel ?? "Curso"}
         </p>
 
         {/* Stats */}
@@ -149,7 +152,7 @@ const Home: FC = () => {
   const { setActiveTab } = useAuth();
 
   useEffect(() => {
-    getCourses()
+    getCursos()
       .then((data) => setCourses(data))
       .catch((error: unknown) => console.error("Error cargando cursos:", error))
       .finally(() => setLoading(false));
@@ -264,7 +267,7 @@ const Home: FC = () => {
         ) : (
           <Row className="g-4">
             {courses.map(c => (
-              <Col key={c.id} md={4}>
+              <Col key={c._id} md={4}>
                 <CourseCard course={c} />
               </Col>
             ))}

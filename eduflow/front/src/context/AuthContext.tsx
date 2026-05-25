@@ -15,13 +15,21 @@ interface AuthContextType {
   login: (email: string, password: string) => Promise<void>;
   register: (nombre: string, email: string, password: string, rol?: "estudiante" | "instructor") => Promise<void>;
   logout: () => void;
+  updateUser: (updated: Usuario) => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [activeTab, setActiveTabState] = useState<string>("home");
-  const [user, setUser] = useState<Usuario | null>(null);
+  const [user, setUser] = useState<Usuario | null>(() => {
+    try {
+      const stored = localStorage.getItem("user");
+      return stored ? JSON.parse(stored) : null;
+    } catch {
+      return null;
+    }
+  });
   const [token, setToken] = useState<string | null>(() => localStorage.getItem("token"));
 
   const isLoggedIn = user !== null;
@@ -35,6 +43,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     setUser(loggedIn);
     setToken(t);
     localStorage.setItem("token", t);
+    localStorage.setItem("user", JSON.stringify(loggedIn));
     setActiveTabState("home");
   };
 
@@ -48,12 +57,19 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     setUser(created);
     setToken(t);
     localStorage.setItem("token", t);
+    localStorage.setItem("user", JSON.stringify(created));
+  };
+
+  const updateUser = (updated: Usuario) => {
+    setUser(updated);
+    localStorage.setItem("user", JSON.stringify(updated));
   };
 
   const logout = () => {
     setUser(null);
     setToken(null);
     localStorage.removeItem("token");
+    localStorage.removeItem("user");
     setActiveTabState("home");
   };
 
@@ -61,7 +77,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     <AuthContext.Provider value={{
       activeTab, setActiveTab,
       userRole, isLoggedIn, userName, user, token,
-      login, register, logout,
+      login, register, logout, updateUser,
     }}>
       {children}
     </AuthContext.Provider>

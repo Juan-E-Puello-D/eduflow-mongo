@@ -29,7 +29,7 @@ const Navbar: React.FC = () => {
     { tab: "analytics",  label: "Analíticas",         Icon: BarChart3      },
     ...(userRole === "instructor"
       ? [{ tab: "instructor", label: "Panel Instructor", Icon: LayoutDashboard }]
-      : []
+      : [{ tab: "dashboard",  label: "Mi panel",         Icon: LayoutDashboard }]
     ),
   ];
 

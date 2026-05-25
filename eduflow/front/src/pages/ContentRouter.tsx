@@ -5,27 +5,64 @@ import Analytics from "./Analytics";
 import DefaultSection from "./DefaultSection";
 import Login from "./Login";
 import Register from "./Register";
+import Profile from "./Profile";
+import Settings from "./Settings";
+import StudentDashboard from "./Dashboard/StudentDashboard";
+import InstructorDashboard from "./Dashboard/InstructorDashboard";
+import ProtectedRoute from "../components/ProtectedRoute";
 
 const ContentRouter: React.FC = () => {
-  const { activeTab, setActiveTab } = useAuth();
+  const { activeTab, setActiveTab, isLoggedIn, userRole } = useAuth();
 
   switch (activeTab) {
     case "login":
-      return (
-        <Login
-          onNavigateToRegister={() => setActiveTab("register")}
-        />
-      );
+      return isLoggedIn
+        ? <Home />
+        : <Login onNavigateToRegister={() => setActiveTab("register")} />;
+
     case "register":
-      return (
-        <Register
-          onNavigateToLogin={() => setActiveTab("login")}
-        />
-      );
+      return isLoggedIn
+        ? <Home />
+        : <Register onNavigateToLogin={() => setActiveTab("login")} />;
+
     case "home":
       return <Home />;
+
     case "analytics":
-      return <Analytics />;
+      return (
+        <ProtectedRoute>
+          <Analytics />
+        </ProtectedRoute>
+      );
+
+    case "instructor":
+      return (
+        <ProtectedRoute requiredRole="instructor">
+          <InstructorDashboard />
+        </ProtectedRoute>
+      );
+
+    case "dashboard":
+      return (
+        <ProtectedRoute>
+          {userRole === "instructor" ? <InstructorDashboard /> : <StudentDashboard />}
+        </ProtectedRoute>
+      );
+
+    case "profile":
+      return (
+        <ProtectedRoute>
+          <Profile />
+        </ProtectedRoute>
+      );
+
+    case "settings":
+      return (
+        <ProtectedRoute>
+          <Settings />
+        </ProtectedRoute>
+      );
+
     default:
       return <DefaultSection activeTab={activeTab} onBack={() => setActiveTab("home")} />;
   }
