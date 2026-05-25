@@ -1,0 +1,19 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "EduFlow Frontend",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "cwd": "front",
+      "port": 5173
+    },
+    {
+      "name": "EduFlow Backend (FastAPI)",
+      "runtimeExecutable": "C:\\Users\\juesp\\Documents\\eduflow mongo\\eduflow\\backend\\.venv\\Scripts\\python.exe",
+      "runtimeArgs": ["main.py"],
+      "cwd": "backend",
+      "port": 4000
+    }
+  ]
+}
