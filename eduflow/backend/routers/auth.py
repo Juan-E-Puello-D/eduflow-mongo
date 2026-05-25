@@ -1,5 +1,4 @@
 from fastapi import APIRouter, HTTPException
-from passlib.context import CryptContext
 from urllib.parse import quote
 from datetime import datetime
 
@@ -9,7 +8,6 @@ from models.usuario import UsuarioCreate
 from utils import serialize_doc
 
 router = APIRouter()
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 
 @router.post("/login")
@@ -24,7 +22,7 @@ async def login(body: dict):
     if not user:
         raise HTTPException(status_code=401, detail="Credenciales inválidas")
 
-    if not pwd_context.verify(password, user.get("password", "")):
+    if password != user.get("password", ""):
         raise HTTPException(status_code=401, detail="Credenciales inválidas")
 
     token = create_access_token({"id": str(user["_id"]), "email": user["email"], "rol": user["rol"]})
@@ -39,20 +37,19 @@ async def register(body: UsuarioCreate):
     if await db["usuarios"].find_one({"email": body.email}):
         raise HTTPException(status_code=409, detail="El email ya está registrado")
 
-    hashed = pwd_context.hash(body.password)
-    avatar_url = f"https://ui-avatars.com/api/?name={quote(body.nombre)}&background=0D6EFD&color=ffffff"
+    seed = quote(body.nombre.split()[0]) if body.nombre else "user"
+    avatar_url = f"https://api.dicebear.com/7.x/avataaars/svg?seed={seed}"
 
     new_user = {
         "nombre": body.nombre,
         "email": body.email,
-        "password": hashed,
+        "password": body.password,
         "rol": body.rol,
         "avatarUrl": avatar_url,
         "fechaRegistro": datetime.utcnow(),
-        "preferencias": {"idioma": "es", "modoOscuro": False},
+        "bio": "",
+        "cursosCreados": [],
     }
-    if body.rol == "instructor":
-        new_user["cursosCreados"] = []
 
     result = await db["usuarios"].insert_one(new_user)
     created = {**new_user, "_id": result.inserted_id}

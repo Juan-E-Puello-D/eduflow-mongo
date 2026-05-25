@@ -1,159 +1,44 @@
 import { useEffect, useState, type FC } from "react";
-import { Container, Row, Col, Button, Card, Badge, Spinner } from "react-bootstrap";
-import { GraduationCap, PlayCircle, Star, Users, Clock, ArrowRight, BookOpen } from "lucide-react";
+import { Container, Row, Col, Button, Badge } from "react-bootstrap";
+import { GraduationCap, ArrowRight, BookOpen } from "lucide-react";
 import { getCursos } from "../services/cursosService";
-import type { Curso as Course } from "../types/models";
+import { getComentarios } from "../services/comentariosService";
+import { getStudentCounts } from "../services/inscripcionesService";
 import { useAuth } from "../context/AuthContext";
-
-// Skeleton card mientras carga
-const SkeletonCard: FC = () => (
-  <Card className="h-100 border-0 rounded-4 overflow-hidden" style={{ boxShadow: "0 2px 12px rgba(0,0,0,0.06)" }}>
-    <div className="bg-light" style={{ height: 160 }} />
-    <Card.Body className="p-4">
-      <div className="bg-light rounded mb-3" style={{ height: 20, width: "40%" }} />
-      <div className="bg-light rounded mb-2" style={{ height: 22, width: "85%" }} />
-      <div className="bg-light rounded mb-4" style={{ height: 16, width: "55%" }} />
-      <div className="d-flex justify-content-between align-items-center">
-        <div className="bg-light rounded" style={{ height: 28, width: "30%" }} />
-        <div className="bg-light rounded-pill" style={{ height: 34, width: "35%" }} />
-      </div>
-    </Card.Body>
-  </Card>
-);
-
-// Genera color de fondo por categoría
-const categoryColor = (cat: string): string => {
-  const map: Record<string, string> = {
-    react:      "linear-gradient(135deg,#dbeafe,#bfdbfe)",
-    mongodb:    "linear-gradient(135deg,#dcfce7,#bbf7d0)",
-    fullstack:  "linear-gradient(135deg,#ede9fe,#ddd6fe)",
-    javascript: "linear-gradient(135deg,#fef9c3,#fef08a)",
-    node:       "linear-gradient(135deg,#dcfce7,#86efac)",
-    css:        "linear-gradient(135deg,#fce7f3,#fbcfe8)",
-  };
-  const key = cat.toLowerCase().replace(/\s+/g, "");
-  return map[key] ?? "linear-gradient(135deg,#f1f5f9,#e2e8f0)";
-};
-
-const categoryIconColor = (cat: string): string => {
-  const map: Record<string, string> = {
-    react: "#3b82f6", mongodb: "#16a34a", fullstack: "#7c3aed",
-    javascript: "#ca8a04", node: "#15803d", css: "#db2777",
-  };
-  return map[cat.toLowerCase().replace(/\s+/g, "")] ?? "#64748b";
-};
-
-const CourseCard: FC<{ course: Course }> = ({ course }) => {
-  const [hovered, setHovered] = useState(false);
-  const cat = course.categoria ?? "General";
-  const price = course.precio === 0 ? "Gratis" : `$${course.precio}`;
-  const rating = (3.8 + Math.random() * 1.2).toFixed(1);
-  const students = Math.floor(Math.random() * 2000 + 300);
-  const duration = `${Math.floor((course.duracionTotal ?? 0) / 60) || Math.floor(Math.random() * 20 + 5)}h`;
-  const title = course.titulo;
-  const instructor = course.instructorId;
-
-  return (
-    <Card
-      className="h-100 border-0 rounded-4 overflow-hidden"
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      style={{
-        boxShadow: hovered
-          ? "0 12px 32px rgba(59,130,246,0.18)"
-          : "0 2px 12px rgba(0,0,0,0.06)",
-        transform: hovered ? "translateY(-4px)" : "none",
-        transition: "all 0.25s ease",
-        cursor: "pointer",
-      }}
-    >
-      {/* Thumbnail */}
-      <div
-        className="d-flex align-items-center justify-content-center"
-        style={{ height: 160, background: categoryColor(cat), position: "relative" }}
-      >
-        <PlayCircle
-          size={52}
-          strokeWidth={1.2}
-          style={{ color: categoryIconColor(cat), opacity: 0.7 }}
-        />
-        <Badge
-          style={{
-            position: "absolute",
-            top: 12,
-            left: 12,
-            background: "rgba(255,255,255,0.9)",
-            color: categoryIconColor(cat),
-            fontWeight: 600,
-            fontSize: "0.72rem",
-            letterSpacing: "0.02em",
-            padding: "5px 10px",
-            borderRadius: 20,
-          }}
-        >
-          {cat}
-        </Badge>
-      </div>
-
-      <Card.Body className="p-4 d-flex flex-column">
-        {/* Título */}
-        <Card.Title className="fw-bold mb-1" style={{ fontSize: "1rem", lineHeight: 1.35, color: "#0f172a" }}>
-          {title}
-        </Card.Title>
-        <p className="text-muted mb-3" style={{ fontSize: "0.82rem" }}>
-          <BookOpen size={12} className="me-1" />
-          {course.nivel ?? "Curso"}
-        </p>
-
-        {/* Stats */}
-        <div className="d-flex gap-3 mb-3" style={{ fontSize: "0.78rem", color: "#64748b" }}>
-          <span className="d-flex align-items-center gap-1">
-            <Star size={12} fill="#facc15" stroke="#facc15" />
-            <span style={{ fontWeight: 600, color: "#0f172a" }}>{rating}</span>
-          </span>
-          <span className="d-flex align-items-center gap-1">
-            <Users size={12} />
-            {students.toLocaleString()}
-          </span>
-          <span className="d-flex align-items-center gap-1">
-            <Clock size={12} />
-            {duration}
-          </span>
-        </div>
-
-        {/* Precio + CTA */}
-        <div className="d-flex justify-content-between align-items-center mt-auto">
-          <span style={{ fontSize: "1.15rem", fontWeight: 700, color: "#0f172a" }}>
-            {price}
-          </span>
-          <Button
-            variant="primary"
-            size="sm"
-            className="d-flex align-items-center gap-1 rounded-pill px-3"
-            style={{
-              fontSize: "0.82rem",
-              fontWeight: 600,
-              background: hovered ? "#1d4ed8" : "#3b82f6",
-              border: "none",
-              transition: "background 0.2s",
-            }}
-          >
-            Ver detalle <ArrowRight size={13} />
-          </Button>
-        </div>
-      </Card.Body>
-    </Card>
-  );
-};
+import { CourseCard, SkeletonCard, type CourseWithRating } from "../components/CourseCardShared";
 
 const Home: FC = () => {
-  const [courses, setCourses] = useState<Course[]>([]);
+  const [topCourses, setTopCourses] = useState<CourseWithRating[]>([]);
   const [loading, setLoading] = useState(true);
   const { setActiveTab } = useAuth();
 
   useEffect(() => {
-    getCursos()
-      .then((data) => setCourses(data))
+    Promise.all([getCursos(), getComentarios(), getStudentCounts()])
+      .then(([cursos, comentarios, studentCounts]) => {
+
+        const ratingMap = new Map<string, { sum: number; count: number }>();
+        comentarios.forEach((comentario) => {
+          if (comentario.cursoId && typeof comentario.calificacion === "number") {
+            const current = ratingMap.get(comentario.cursoId) ?? { sum: 0, count: 0 };
+            current.sum += comentario.calificacion;
+            current.count += 1;
+            ratingMap.set(comentario.cursoId, current);
+          }
+        });
+
+        const ranked = cursos
+          .map((curso) => ({
+            ...curso,
+            rating: ratingMap.has(curso._id)
+              ? ratingMap.get(curso._id)!.sum / ratingMap.get(curso._id)!.count
+              : 0,
+            students: studentCounts[curso._id] ?? 0,
+          }))
+          .sort((a, b) => b.rating - a.rating)
+          .slice(0, 6);
+
+        setTopCourses(ranked);
+      })
       .catch((error: unknown) => console.error("Error cargando cursos:", error))
       .finally(() => setLoading(false));
   }, []);
@@ -182,13 +67,13 @@ const Home: FC = () => {
                 className="mb-3 px-3 py-2 rounded-pill"
                 style={{ background: "rgba(255,255,255,0.15)", fontSize: "0.78rem", fontWeight: 500, letterSpacing: "0.04em" }}
               >
-                ✦ Plataforma #1 de aprendizaje Fullstack
+                ✦ Plataforma #1 de aprendizaje en línea ✦
               </Badge>
               <h1 className="fw-bold mb-3" style={{ fontSize: "clamp(2rem, 5vw, 3rem)", lineHeight: 1.15 }}>
                 Aprende sin límites<br />con EduFlow
               </h1>
               <p className="mb-4" style={{ fontSize: "1.05rem", opacity: 0.8, maxWidth: 440 }}>
-                Domina MongoDB, React y el desarrollo Fullstack con proyectos reales.
+                Domina el aprendizaje en línea con nuestra plataforma intuitiva, cursos de calidad y comunidad de apoyo. ¡Tu camino al éxito comienza aquí!
               </p>
               <div className="d-flex flex-column flex-sm-row gap-3">
                 <Button
@@ -259,16 +144,16 @@ const Home: FC = () => {
               </Col>
             ))}
           </Row>
-        ) : courses.length === 0 ? (
+        ) : topCourses.length === 0 ? (
           <div className="text-center py-5 text-muted">
             <BookOpen size={48} strokeWidth={1} className="mb-3 opacity-25" />
             <p className="mb-0">No hay cursos disponibles por ahora.</p>
           </div>
         ) : (
           <Row className="g-4">
-            {courses.map(c => (
+            {topCourses.map((c) => (
               <Col key={c._id} md={4}>
-                <CourseCard course={c} />
+                <CourseCard course={c} rating={c.rating} students={c.students} />
               </Col>
             ))}
           </Row>

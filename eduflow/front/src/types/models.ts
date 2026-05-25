@@ -20,6 +20,8 @@ export interface Curso {
   lecciones: Leccion[];
   nivel: "Básico" | "Intermedio" | "Avanzado";
   publicado: boolean;
+  imagen?: string;
+  totalLecciones?: number;
 }
 
 export interface Preferencias {
@@ -34,7 +36,8 @@ export interface Usuario {
   rol: "instructor" | "estudiante";
   avatarUrl: string;
   fechaRegistro: string;
-  preferencias: Preferencias;
+  bio?: string;
+  preferencias?: Preferencias;
   cursosCreados?: string[];
 }
 

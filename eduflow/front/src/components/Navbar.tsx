@@ -168,7 +168,7 @@ const Navbar: React.FC = () => {
                     {/* Items */}
                     {[
                       { icon: User,      label: "Mi perfil",      tab: "profile"  },
-                      { icon: BookOpen,  label: "Mis cursos",     tab: "courses"  },
+                      { icon: BookOpen,  label: "Mis cursos",     tab: "instructor"  },
                       { icon: Settings,  label: "Configuración",  tab: "settings" },
                     ].map(({ icon: Icon, label, tab }) => (
                       <button

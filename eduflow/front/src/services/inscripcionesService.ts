@@ -6,6 +6,11 @@ export const getInscripciones = async (filters: { usuarioId?: string; cursoId?: 
   return data;
 };
 
+export const getStudentCounts = async (): Promise<Record<string, number>> => {
+  const { data } = await api.get<Record<string, number>>("/inscripciones/counts");
+  return data;
+};
+
 export const inscribirse = async (usuarioId: string, cursoId: string): Promise<Inscripcion> => {
   const { data } = await api.post<Inscripcion>("/inscripciones", { usuarioId, cursoId });
   return data;

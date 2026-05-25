@@ -18,6 +18,17 @@ def _oid(value: str) -> ObjectId:
         raise HTTPException(status_code=422, detail=f"ID inválido: {value}")
 
 
+@router.get("/counts")
+async def get_student_counts():
+    """Devuelve el número de estudiantes por curso. Endpoint público."""
+    db = get_db()
+    pipeline = [
+        {"$group": {"_id": "$cursoId", "total": {"$sum": 1}}}
+    ]
+    docs = await db["inscripciones"].aggregate(pipeline).to_list(length=None)
+    return {str(d["_id"]): d["total"] for d in docs}
+
+
 @router.get("")
 async def list_inscripciones(
     usuarioId: str = Query(default=None),

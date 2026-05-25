@@ -26,7 +26,9 @@ async def list_cursos(
     q: str = Query(default=None),
 ):
     db = get_db()
-    filt: dict = {"publicado": True}
+    filt: dict = {}
+    if not instructorId:
+        filt["publicado"] = True
     if categoria:
         filt["categoria"] = categoria
     if nivel:

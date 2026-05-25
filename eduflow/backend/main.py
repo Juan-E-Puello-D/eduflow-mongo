@@ -8,7 +8,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from database import lifespan
-from routers import auth, cursos, usuarios, inscripciones, comentarios
+from routers import auth, cursos, usuarios, inscripciones, comentarios, analytics
 
 app = FastAPI(title="EduFlow API", lifespan=lifespan)
 
@@ -24,6 +24,7 @@ app.include_router(cursos.router, prefix="/api/cursos", tags=["cursos"])
 app.include_router(usuarios.router, prefix="/api/usuarios", tags=["usuarios"])
 app.include_router(inscripciones.router, prefix="/api/inscripciones", tags=["inscripciones"])
 app.include_router(comentarios.router, prefix="/api/comentarios", tags=["comentarios"])
+app.include_router(analytics.router, prefix="/api/analytics", tags=["analytics"])
 
 
 @app.get("/api/health", tags=["health"])

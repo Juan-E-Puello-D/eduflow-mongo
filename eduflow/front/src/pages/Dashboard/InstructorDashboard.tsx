@@ -1,40 +1,39 @@
 import React, { useEffect, useState } from "react";
-import { Container, Row, Col, Card, Badge, Spinner } from "react-bootstrap";
+import { Container, Row, Col, Card, Badge, Spinner, Modal, Form } from "react-bootstrap";
 import {
-  Users, BookOpen, Star, PlusCircle, BarChart3,
-  PlayCircle, Settings, ArrowRight, TrendingUp, Eye,
+  Users, BookOpen, Star, PlusCircle,
+  Settings, TrendingUp, Eye,
 } from "lucide-react";
 import { useAuth } from "../../context/AuthContext";
-import { getCursos } from "../../services/cursosService";
+import { CourseCard } from "../../components/CourseCardShared";
+import { getCursos, updateCurso } from "../../services/cursosService";
 import { getInscripciones } from "../../services/inscripcionesService";
 import type { Curso } from "../../types/models";
 
-const categoryColor = (cat: string) => {
-  const map: Record<string, string> = {
-    react: "linear-gradient(135deg,#dbeafe,#bfdbfe)",
-    mongodb: "linear-gradient(135deg,#dcfce7,#bbf7d0)",
-    fullstack: "linear-gradient(135deg,#ede9fe,#ddd6fe)",
-    javascript: "linear-gradient(135deg,#fef9c3,#fef08a)",
-    node: "linear-gradient(135deg,#dcfce7,#86efac)",
-    css: "linear-gradient(135deg,#fce7f3,#fbcfe8)",
-  };
-  return map[cat.toLowerCase().replace(/\s+/g, "")] ?? "linear-gradient(135deg,#f1f5f9,#e2e8f0)";
-};
+interface EditForm {
+  titulo: string;
+  descripcion: string;
+  categoria: string;
+  nivel: "Básico" | "Intermedio" | "Avanzado";
+  precio: number;
+  publicado: boolean;
+}
 
-const categoryIconColor = (cat: string) => {
-  const map: Record<string, string> = {
-    react: "#3b82f6", mongodb: "#16a34a", fullstack: "#7c3aed",
-    javascript: "#ca8a04", node: "#15803d", css: "#db2777",
-  };
-  return map[cat.toLowerCase().replace(/\s+/g, "")] ?? "#64748b";
-};
+const NIVELES = ["Básico", "Intermedio", "Avanzado"] as const;
+const CATEGORIAS = ["React", "MongoDB", "Fullstack", "JavaScript", "Node", "CSS", "Python", "TypeScript", "Otro"];
 
 const InstructorDashboard: React.FC = () => {
   const { user, setActiveTab } = useAuth();
   const [courses, setCourses] = useState<Curso[]>([]);
   const [totalStudents, setTotalStudents] = useState(0);
+  const [courseStudents, setCourseStudents] = useState<Record<string, number>>({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+
+  const [editTarget, setEditTarget] = useState<Curso | null>(null);
+  const [editForm, setEditForm] = useState<EditForm | null>(null);
+  const [saving, setSaving] = useState(false);
+  const [saveError, setSaveError] = useState("");
 
   useEffect(() => {
     if (!user) return;
@@ -43,12 +42,27 @@ const InstructorDashboard: React.FC = () => {
         const all = await getCursos({ instructorId: user._id });
         setCourses(all);
 
-        const ins = await getInscripciones();
-        const myStudents = ins.filter(i => all.some(c => c._id === i.cursoId));
-        const unique = new Set(myStudents.map(i => i.usuarioId));
-        setTotalStudents(unique.size);
+        try {
+          const ins = await getInscripciones();
+          const myEnrollments = ins.filter(i => all.some(c => c._id === i.cursoId));
+          const unique = new Set(myEnrollments.map(i => i.usuarioId));
+          setTotalStudents(unique.size);
+
+          const counts: Record<string, Set<string>> = {};
+          myEnrollments.forEach(item => {
+            if (!counts[item.cursoId]) {
+              counts[item.cursoId] = new Set();
+            }
+            counts[item.cursoId].add(item.usuarioId);
+          });
+          setCourseStudents(Object.fromEntries(
+            Object.entries(counts).map(([cursoId, set]) => [cursoId, set.size])
+          ));
+        } catch {
+          // conteo de estudiantes no crítico
+        }
       } catch {
-        setError("No se pudieron cargar los datos del panel.");
+        setError("No se pudieron cargar tus cursos.");
       } finally {
         setLoading(false);
       }
@@ -65,6 +79,40 @@ const InstructorDashboard: React.FC = () => {
     { label: "Estudiantes",      value: totalStudents,  icon: Users,       color: "#f59e0b", bg: "#fffbeb" },
     { label: "Valoración media", value: avgRating,      icon: Star,        color: "#8b5cf6", bg: "#f5f3ff" },
   ];
+
+  const openEdit = (curso: Curso) => {
+    setEditTarget(curso);
+    setEditForm({
+      titulo: curso.titulo,
+      descripcion: curso.descripcion,
+      categoria: curso.categoria ?? "",
+      nivel: curso.nivel ?? "Básico",
+      precio: curso.precio ?? 0,
+      publicado: curso.publicado,
+    });
+    setSaveError("");
+  };
+
+  const closeEdit = () => {
+    setEditTarget(null);
+    setEditForm(null);
+    setSaveError("");
+  };
+
+  const handleSave = async () => {
+    if (!editTarget || !editForm) return;
+    setSaving(true);
+    setSaveError("");
+    try {
+      const updated = await updateCurso(editTarget._id, editForm);
+      setCourses(prev => prev.map(c => c._id === updated._id ? updated : c));
+      closeEdit();
+    } catch {
+      setSaveError("No se pudo guardar. Intenta de nuevo.");
+    } finally {
+      setSaving(false);
+    }
+  };
 
   const initials = user?.nombre
     ? user.nombre.split(" ").map(w => w[0]).slice(0, 2).join("").toUpperCase()
@@ -173,74 +221,17 @@ const InstructorDashboard: React.FC = () => {
           </Card>
         ) : (
           <Row className="g-4">
-            {courses.map(curso => {
-              const cat = curso.categoria ?? "General";
-              return (
-                <Col key={curso._id} md={6} lg={4}>
-                  <Card
-                    className="border-0 h-100"
-                    style={{ borderRadius: 16, boxShadow: "0 2px 12px rgba(0,0,0,0.06)", overflow: "hidden", cursor: "pointer", transition: "transform 0.2s, box-shadow 0.2s" }}
-                    onMouseEnter={e => {
-                      (e.currentTarget as HTMLElement).style.transform = "translateY(-4px)";
-                      (e.currentTarget as HTMLElement).style.boxShadow = "0 12px 28px rgba(124,58,237,0.15)";
-                    }}
-                    onMouseLeave={e => {
-                      (e.currentTarget as HTMLElement).style.transform = "none";
-                      (e.currentTarget as HTMLElement).style.boxShadow = "0 2px 12px rgba(0,0,0,0.06)";
-                    }}
-                  >
-                    <div
-                      className="d-flex align-items-center justify-content-center position-relative"
-                      style={{ height: 130, background: categoryColor(cat) }}
-                    >
-                      <PlayCircle size={44} strokeWidth={1.2} style={{ color: categoryIconColor(cat), opacity: 0.65 }} />
-                      <Badge style={{ position: "absolute", top: 10, left: 10, background: "rgba(255,255,255,0.9)", color: categoryIconColor(cat), fontWeight: 600, fontSize: "0.7rem", padding: "4px 10px", borderRadius: 20 }}>
-                        {cat}
-                      </Badge>
-                      <div
-                        style={{
-                          position: "absolute", top: 10, right: 10,
-                          background: curso.publicado ? "#22c55e" : "#94a3b8",
-                          color: "white", borderRadius: 20, padding: "4px 10px", fontSize: "0.7rem", fontWeight: 600,
-                        }}
-                      >
-                        {curso.publicado ? "Publicado" : "Borrador"}
-                      </div>
-                    </div>
-
-                    <Card.Body className="p-4">
-                      <h6 className="fw-bold mb-1" style={{ color: "#0f172a", lineHeight: 1.3 }}>{curso.titulo}</h6>
-                      <p className="text-muted mb-3" style={{ fontSize: "0.8rem" }}>
-                        {curso.nivel} · {curso.lecciones?.length ?? 0} lecciones
-                      </p>
-
-                      <div className="d-flex align-items-center justify-content-between">
-                        <div className="d-flex align-items-center gap-2" style={{ fontSize: "0.78rem", color: "#64748b" }}>
-                          <Star size={13} fill="#facc15" stroke="#facc15" />
-                          <span style={{ fontWeight: 600, color: "#0f172a" }}>4.8</span>
-                          <span style={{ color: "#94a3b8" }}>valoración</span>
-                        </div>
-                        <div className="d-flex gap-2">
-                          <button
-                            className="btn btn-sm rounded-3 px-3 fw-semibold"
-                            style={{ fontSize: "0.75rem", background: "#f5f3ff", color: "#7c3aed", border: "none" }}
-                            onClick={() => setActiveTab("analytics")}
-                          >
-                            <BarChart3 size={12} className="me-1" />Stats
-                          </button>
-                          <button
-                            className="btn btn-sm rounded-3 px-3 fw-semibold"
-                            style={{ fontSize: "0.75rem", background: "linear-gradient(90deg,#7c3aed,#8b5cf6)", color: "white", border: "none" }}
-                          >
-                            Editar
-                          </button>
-                        </div>
-                      </div>
-                    </Card.Body>
-                  </Card>
-                </Col>
-              );
-            })}
+            {courses.map(curso => (
+              <Col key={curso._id} md={6} lg={4}>
+                <CourseCard
+                  course={curso}
+                  rating={4.8}
+                  students={courseStudents[curso._id] ?? 0}
+                  onDetail={() => setActiveTab("analytics")}
+                  onEdit={() => openEdit(curso)}
+                />
+              </Col>
+            ))}
           </Row>
         )}
 
@@ -255,7 +246,7 @@ const InstructorDashboard: React.FC = () => {
           ].map(({ icon: Icon, label, desc, tab, color, bg }) => (
             <Col key={tab} xs={6} md={3}>
               <button
-                className="btn w-100 text-start p-3 p-md-4 border-0"
+                className="btn w-100 text-start p-3 p-md-4 border-0 h-100"
                 style={{ background: "white", borderRadius: 16, boxShadow: "0 2px 12px rgba(0,0,0,0.06)", transition: "transform 0.18s, box-shadow 0.18s" }}
                 onMouseEnter={e => {
                   (e.currentTarget as HTMLElement).style.transform = "translateY(-3px)";
@@ -282,22 +273,143 @@ const InstructorDashboard: React.FC = () => {
         </Row>
 
         {/* Consejo del panel */}
-        <div
-          className="mt-5 p-4 rounded-4 d-flex align-items-start gap-3"
-          style={{ background: "linear-gradient(135deg,#f5f3ff,#ede9fe)", border: "1px solid #ddd6fe" }}
-        >
-          <div className="d-flex align-items-center justify-content-center rounded-3 flex-shrink-0" style={{ width: 44, height: 44, background: "#7c3aed" }}>
-            <Star size={20} style={{ color: "white" }} />
-          </div>
-          <div>
-            <h6 className="fw-bold mb-1" style={{ color: "#4c1d95" }}>Consejo para instructores</h6>
-            <p className="mb-0" style={{ fontSize: "0.875rem", color: "#6d28d9" }}>
-              Los cursos con videos cortos (5-10 min), ejercicios prácticos y actualizaciones frecuentes obtienen hasta 3× más inscripciones. ¡Sigue publicando!
-            </p>
-          </div>
-        </div>
+          {/* <div
+            className="mt-5 p-4 rounded-4 d-flex align-items-start gap-3"
+            style={{ background: "linear-gradient(135deg,#f5f3ff,#ede9fe)", border: "1px solid #ddd6fe" }}
+          >
+            <div className="d-flex align-items-center justify-content-center rounded-3 flex-shrink-0" style={{ width: 44, height: 44, background: "#7c3aed" }}>
+              <Star size={20} style={{ color: "white" }} />
+            </div>
+            <div>
+              <h6 className="fw-bold mb-1" style={{ color: "#4c1d95" }}>Consejo para instructores</h6>
+              <p className="mb-0" style={{ fontSize: "0.875rem", color: "#6d28d9" }}>
+                Los cursos con videos cortos (5-10 min), ejercicios prácticos y actualizaciones frecuentes obtienen hasta 3× más inscripciones. ¡Sigue publicando!
+              </p>
+            </div>
+          </div> */}
 
       </Container>
+
+      {/* Modal de edición */}
+      <Modal show={!!editTarget} onHide={closeEdit} centered size="lg">
+        <Modal.Header closeButton style={{ borderBottom: "1px solid #ede9fe" }}>
+          <Modal.Title style={{ fontWeight: 700, color: "#1e1b4b", fontSize: "1.1rem" }}>
+            Editar curso
+          </Modal.Title>
+        </Modal.Header>
+
+        <Modal.Body className="p-4">
+          {editForm && (
+            <Form>
+              <Row className="g-3">
+                <Col xs={12}>
+                  <Form.Label className="fw-semibold" style={{ fontSize: "0.85rem", color: "#374151" }}>
+                    Título
+                  </Form.Label>
+                  <Form.Control
+                    value={editForm.titulo}
+                    onChange={e => setEditForm(f => f && ({ ...f, titulo: e.target.value }))}
+                    style={{ borderRadius: 10, fontSize: "0.9rem" }}
+                    placeholder="Título del curso"
+                  />
+                </Col>
+
+                <Col xs={12}>
+                  <Form.Label className="fw-semibold" style={{ fontSize: "0.85rem", color: "#374151" }}>
+                    Descripción
+                  </Form.Label>
+                  <Form.Control
+                    as="textarea"
+                    rows={3}
+                    value={editForm.descripcion}
+                    onChange={e => setEditForm(f => f && ({ ...f, descripcion: e.target.value }))}
+                    style={{ borderRadius: 10, fontSize: "0.9rem", resize: "vertical" }}
+                    placeholder="Describe de qué trata el curso"
+                  />
+                </Col>
+
+                <Col xs={12} sm={6}>
+                  <Form.Label className="fw-semibold" style={{ fontSize: "0.85rem", color: "#374151" }}>
+                    Categoría
+                  </Form.Label>
+                  <Form.Select
+                    value={editForm.categoria}
+                    onChange={e => setEditForm(f => f && ({ ...f, categoria: e.target.value }))}
+                    style={{ borderRadius: 10, fontSize: "0.9rem" }}
+                  >
+                    {CATEGORIAS.map(c => <option key={c} value={c}>{c}</option>)}
+                  </Form.Select>
+                </Col>
+
+                <Col xs={12} sm={6}>
+                  <Form.Label className="fw-semibold" style={{ fontSize: "0.85rem", color: "#374151" }}>
+                    Nivel
+                  </Form.Label>
+                  <Form.Select
+                    value={editForm.nivel}
+                    onChange={e => setEditForm(f => f && ({ ...f, nivel: e.target.value as EditForm["nivel"] }))}
+                    style={{ borderRadius: 10, fontSize: "0.9rem" }}
+                  >
+                    {NIVELES.map(n => <option key={n} value={n}>{n}</option>)}
+                  </Form.Select>
+                </Col>
+
+                <Col xs={12} sm={6}>
+                  <Form.Label className="fw-semibold" style={{ fontSize: "0.85rem", color: "#374151" }}>
+                    Precio (USD)
+                  </Form.Label>
+                  <Form.Control
+                    type="number"
+                    min={0}
+                    step={0.01}
+                    value={editForm.precio}
+                    onChange={e => setEditForm(f => f && ({ ...f, precio: parseFloat(e.target.value) || 0 }))}
+                    style={{ borderRadius: 10, fontSize: "0.9rem" }}
+                  />
+                </Col>
+
+                <Col xs={12} sm={6} className="d-flex align-items-end">
+                  <Form.Check
+                    type="switch"
+                    id="publicado-switch"
+                    label={editForm.publicado ? "Publicado" : "Borrador"}
+                    checked={editForm.publicado}
+                    onChange={e => setEditForm(f => f && ({ ...f, publicado: e.target.checked }))}
+                    style={{ fontSize: "0.9rem" }}
+                    className="mb-2"
+                  />
+                </Col>
+              </Row>
+
+              {saveError && (
+                <div className="alert alert-danger rounded-3 mt-3 mb-0" style={{ fontSize: "0.85rem" }}>
+                  {saveError}
+                </div>
+              )}
+            </Form>
+          )}
+        </Modal.Body>
+
+        <Modal.Footer style={{ borderTop: "1px solid #ede9fe" }}>
+          <button
+            className="btn rounded-pill px-4"
+            style={{ border: "1.5px solid #e5e7eb", color: "#6b7280", fontSize: "0.875rem" }}
+            onClick={closeEdit}
+            disabled={saving}
+          >
+            Cancelar
+          </button>
+          <button
+            className="btn rounded-pill px-4 fw-semibold text-white"
+            style={{ background: "linear-gradient(90deg,#7c3aed,#8b5cf6)", border: "none", fontSize: "0.875rem", minWidth: 100 }}
+            onClick={handleSave}
+            disabled={saving}
+          >
+            {saving ? <><Spinner size="sm" animation="border" className="me-2" />Guardando…</> : "Guardar cambios"}
+          </button>
+        </Modal.Footer>
+      </Modal>
+
     </div>
   );
 };

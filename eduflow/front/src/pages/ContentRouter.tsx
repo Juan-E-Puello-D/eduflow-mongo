@@ -7,6 +7,7 @@ import Login from "./Login";
 import Register from "./Register";
 import Profile from "./Profile";
 import Settings from "./Settings";
+import CoursesPage from "./CoursesPage";
 import StudentDashboard from "./Dashboard/StudentDashboard";
 import InstructorDashboard from "./Dashboard/InstructorDashboard";
 import ProtectedRoute from "../components/ProtectedRoute";
@@ -27,6 +28,9 @@ const ContentRouter: React.FC = () => {
 
     case "home":
       return <Home />;
+
+    case "courses":
+      return <CoursesPage />;
 
     case "analytics":
       return (
