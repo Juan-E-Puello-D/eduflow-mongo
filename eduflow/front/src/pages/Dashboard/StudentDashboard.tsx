@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { Container, Row, Col, Card, ProgressBar, Badge, Spinner } from "react-bootstrap";
+import { Container, Row, Col, Card, Badge, Spinner } from "react-bootstrap";
 import {
   BookOpen, CheckCircle, Clock, Award, ArrowRight,
-  PlayCircle, TrendingUp, Zap,
+  TrendingUp, Zap,
 } from "lucide-react";
 import { useAuth } from "../../context/AuthContext";
 import { getInscripciones } from "../../services/inscripcionesService";
 import { getCursoById } from "../../services/cursosService";
+import { CourseCard } from "../../components/CourseCardShared";
 import type { Inscripcion, Curso } from "../../types/models";
 
 interface CourseProgress {
@@ -14,28 +15,8 @@ interface CourseProgress {
   inscripcion: Inscripcion;
 }
 
-const categoryColor = (cat: string) => {
-  const map: Record<string, string> = {
-    react: "linear-gradient(135deg,#dbeafe,#bfdbfe)",
-    mongodb: "linear-gradient(135deg,#dcfce7,#bbf7d0)",
-    fullstack: "linear-gradient(135deg,#ede9fe,#ddd6fe)",
-    javascript: "linear-gradient(135deg,#fef9c3,#fef08a)",
-    node: "linear-gradient(135deg,#dcfce7,#86efac)",
-    css: "linear-gradient(135deg,#fce7f3,#fbcfe8)",
-  };
-  return map[cat.toLowerCase().replace(/\s+/g, "")] ?? "linear-gradient(135deg,#f1f5f9,#e2e8f0)";
-};
-
-const categoryIconColor = (cat: string) => {
-  const map: Record<string, string> = {
-    react: "#3b82f6", mongodb: "#16a34a", fullstack: "#7c3aed",
-    javascript: "#ca8a04", node: "#15803d", css: "#db2777",
-  };
-  return map[cat.toLowerCase().replace(/\s+/g, "")] ?? "#64748b";
-};
-
 const StudentDashboard: React.FC = () => {
-  const { user, setActiveTab } = useAuth();
+  const { user, setActiveTab, setSelectedCourseId } = useAuth();
   const [items, setItems] = useState<CourseProgress[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -180,63 +161,21 @@ const StudentDashboard: React.FC = () => {
         ) : (
           <Row className="g-4">
             {items.map(({ curso, inscripcion }) => {
-              const cat = curso.categoria ?? "General";
               const pct = Math.round(inscripcion.porcentajeProgreso);
               const isComplete = pct >= 100;
               return (
                 <Col key={curso._id} md={6} lg={4}>
-                  <Card
-                    className="border-0 h-100"
-                    style={{ borderRadius: 16, boxShadow: "0 2px 12px rgba(0,0,0,0.06)", overflow: "hidden", cursor: "pointer", transition: "transform 0.2s, box-shadow 0.2s" }}
-                    onMouseEnter={e => {
-                      (e.currentTarget as HTMLElement).style.transform = "translateY(-4px)";
-                      (e.currentTarget as HTMLElement).style.boxShadow = "0 12px 28px rgba(59,130,246,0.15)";
+                  <CourseCard
+                    course={curso}
+                    rating={0}
+                    students={0}
+                    progress={pct}
+                    actionLabel={isComplete ? "Ver certificado" : "Continuar"}
+                    onAction={() => {
+                      setSelectedCourseId(curso._id);
+                      setActiveTab("courseDetail");
                     }}
-                    onMouseLeave={e => {
-                      (e.currentTarget as HTMLElement).style.transform = "none";
-                      (e.currentTarget as HTMLElement).style.boxShadow = "0 2px 12px rgba(0,0,0,0.06)";
-                    }}
-                  >
-                    <div
-                      className="d-flex align-items-center justify-content-center position-relative"
-                      style={{ height: 130, background: categoryColor(cat) }}
-                    >
-                      <PlayCircle size={44} strokeWidth={1.2} style={{ color: categoryIconColor(cat), opacity: 0.65 }} />
-                      <Badge style={{ position: "absolute", top: 10, left: 10, background: "rgba(255,255,255,0.9)", color: categoryIconColor(cat), fontWeight: 600, fontSize: "0.7rem", padding: "4px 10px", borderRadius: 20 }}>
-                        {cat}
-                      </Badge>
-                      {isComplete && (
-                        <div className="d-flex align-items-center gap-1" style={{ position: "absolute", top: 10, right: 10, background: "#22c55e", color: "white", borderRadius: 20, padding: "4px 10px", fontSize: "0.7rem", fontWeight: 600 }}>
-                          <CheckCircle size={12} /> Completado
-                        </div>
-                      )}
-                    </div>
-
-                    <Card.Body className="p-4">
-                      <h6 className="fw-bold mb-1" style={{ color: "#0f172a", lineHeight: 1.3 }}>{curso.titulo}</h6>
-                      <p className="text-muted mb-3" style={{ fontSize: "0.8rem" }}>Nivel: {curso.nivel}</p>
-
-                      <div className="mb-2 d-flex justify-content-between">
-                        <span style={{ fontSize: "0.78rem", color: "#64748b" }}>Progreso</span>
-                        <span style={{ fontSize: "0.78rem", fontWeight: 600, color: isComplete ? "#22c55e" : "#1565c0" }}>{pct}%</span>
-                      </div>
-                      <ProgressBar now={pct} style={{ height: 6, borderRadius: 99 }} variant={isComplete ? "success" : "primary"} />
-
-                      <div className="mt-3 d-flex justify-content-between align-items-center">
-                        <span style={{ fontSize: "0.75rem", color: "#94a3b8" }}>
-                          <Clock size={12} className="me-1" />
-                          {inscripcion.leccionesCompletadas.length} lecciones
-                        </span>
-                        <button
-                          className="btn btn-sm rounded-pill px-3 fw-semibold"
-                          style={{ fontSize: "0.78rem", background: isComplete ? "#f0fdf4" : "linear-gradient(90deg,#1565c0,#1e88e5)", color: isComplete ? "#16a34a" : "white", border: isComplete ? "1px solid #bbf7d0" : "none" }}
-                          onClick={() => setActiveTab("courses")}
-                        >
-                          {isComplete ? "Ver certificado" : "Continuar"}
-                        </button>
-                      </div>
-                    </Card.Body>
-                  </Card>
+                  />
                 </Col>
               );
             })}

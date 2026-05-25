@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, type ReactNode } from "react";
 import { login as apiLogin, register as apiRegister } from "../services/authService";
+import { updateUsuario } from "../services/usuariosService";
 import type { Usuario } from "../types/models";
 
 type Role = "student" | "instructor";
@@ -7,6 +8,8 @@ type Role = "student" | "instructor";
 interface AuthContextType {
   activeTab: string;
   setActiveTab: (tab: string) => void;
+  selectedCourseId: string | null;
+  setSelectedCourseId: (id: string | null) => void;
   userRole: Role;
   isLoggedIn: boolean;
   userName: string;
@@ -16,12 +19,14 @@ interface AuthContextType {
   register: (nombre: string, email: string, password: string, rol?: "estudiante" | "instructor") => Promise<void>;
   logout: () => void;
   updateUser: (updated: Usuario) => void;
+  updateProfile: (payload: Partial<Usuario>) => Promise<Usuario>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [activeTab, setActiveTabState] = useState<string>("home");
+  const [selectedCourseId, setSelectedCourseId] = useState<string | null>(null);
   const [user, setUser] = useState<Usuario | null>(() => {
     try {
       const stored = localStorage.getItem("user");
@@ -65,9 +70,18 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     localStorage.setItem("user", JSON.stringify(updated));
   };
 
+  const updateProfile = async (payload: Partial<Usuario>) => {
+    if (!user) throw new Error("No user logged in");
+    const updated = await updateUsuario(user._id, payload);
+    setUser(updated);
+    localStorage.setItem("user", JSON.stringify(updated));
+    return updated;
+  };
+
   const logout = () => {
     setUser(null);
     setToken(null);
+    setSelectedCourseId(null);
     localStorage.removeItem("token");
     localStorage.removeItem("user");
     setActiveTabState("home");
@@ -76,8 +90,9 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   return (
     <AuthContext.Provider value={{
       activeTab, setActiveTab,
+      selectedCourseId, setSelectedCourseId,
       userRole, isLoggedIn, userName, user, token,
-      login, register, logout, updateUser,
+      login, register, logout, updateUser, updateProfile,
     }}>
       {children}
     </AuthContext.Provider>

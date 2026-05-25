@@ -2,10 +2,12 @@ import { useEffect, useState, useMemo, useRef, type FC } from "react";
 import {
   Container, Row, Col, Form, InputGroup, Button, Pagination,
 } from "react-bootstrap";
+import { useAuth } from "../context/AuthContext";
 import { Search, SlidersHorizontal, BookOpen, X, Star, DollarSign } from "lucide-react";
 import { getCursos } from "../services/cursosService";
 import { getComentarios } from "../services/comentariosService";
 import { getStudentCounts } from "../services/inscripcionesService";
+import { getCategorias } from "../services/Utils";
 import { CourseCard, SkeletonCard, type CourseWithRating } from "../components/CourseCardShared";
 
 const PAGE_SIZE = 9;
@@ -46,9 +48,11 @@ const StarLabel: FC<{ value: number }> = ({ value }) => (
 const CoursesPage: FC = () => {
   const [allCourses, setAllCourses]           = useState<CourseWithRating[]>([]);
   const [loading, setLoading]                 = useState(true);
+  const { setActiveTab, setSelectedCourseId }  = useAuth();
   const [search, setSearch]                   = useState("");
   const [debouncedSearch, setDebouncedSearch] = useState("");
   const [categoria, setCategoria]             = useState("");
+  const [categories, setCategories]           = useState<string[]>([]);
   const [minRating, setMinRating]             = useState(0);
   const [precioMin, setPrecioMin]             = useState("");
   const [precioMax, setPrecioMax]             = useState("");
@@ -56,8 +60,8 @@ const CoursesPage: FC = () => {
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
-    Promise.all([getCursos(), getComentarios(), getStudentCounts()])
-      .then(([cursos, comentarios, studentCounts]) => {
+    Promise.all([getCursos(), getComentarios(), getStudentCounts(), getCategorias()])
+      .then(([cursos, comentarios, studentCounts, categorias]) => {
         const ratingMap = new Map<string, { sum: number; count: number }>();
         comentarios.forEach((c) => {
           if (c.cursoId && typeof c.calificacion === "number") {
@@ -76,6 +80,7 @@ const CoursesPage: FC = () => {
             students: studentCounts[curso._id] ?? 0,
           }))
         );
+        setCategories(categorias.sort((a, b) => a.localeCompare(b, undefined, { sensitivity: "base" })));
       })
       .catch((e: unknown) => console.error(e))
       .finally(() => setLoading(false));
@@ -110,11 +115,6 @@ const CoursesPage: FC = () => {
     setPrecioMin(""); setPrecioMax("");
     setPage(1);
   };
-
-  const categories = useMemo(
-    () => [...new Set(allCourses.map((c) => c.categoria).filter(Boolean))].sort(),
-    [allCourses]
-  );
 
   const filtered = useMemo(() => {
     const q    = debouncedSearch.toLowerCase();
@@ -373,7 +373,15 @@ const CoursesPage: FC = () => {
           <Row className="g-4">
             {paginated.map((c) => (
               <Col key={c._id} xs={12} sm={6} lg={4}>
-                <CourseCard course={c} rating={c.rating} students={c.students} />
+                <CourseCard
+                  course={c}
+                  rating={c.rating}
+                  students={c.students}
+                  onDetail={() => {
+                    setSelectedCourseId(c._id);
+                    setActiveTab("courseDetail");
+                  }}
+                />
               </Col>
             ))}
           </Row>

@@ -1,17 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import { User, Mail, Calendar, Shield, Edit3, Check, X, Camera } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
-import { updateUsuario } from "../services/usuariosService";
+import { getCursos, getCursoById } from "../services/cursosService";
+import { getInscripciones } from "../services/inscripcionesService";
+import { getComentarios } from "../services/comentariosService";
 
 const Profile: React.FC = () => {
-  const { user, updateUser } = useAuth();
+  const { user, updateProfile } = useAuth();
 
   const [editing, setEditing] = useState(false);
   const [nombre, setNombre] = useState(user?.nombre ?? "");
   const [saving, setSaving] = useState(false);
   const [saveError, setSaveError] = useState("");
   const [saveOk, setSaveOk] = useState(false);
+  const [studentStats, setStudentStats] = useState({ cursosEnProgreso: 0, cursosCompletados: 0, horasAprendizaje: 0 });
+  const [instructorStats, setInstructorStats] = useState({ cursosCreados: 0, estudiantesTotales: 0, valoracionMedia: "Sin calificaciones" });
 
   if (!user) return null;
 
@@ -28,8 +32,7 @@ const Profile: React.FC = () => {
     setSaving(true);
     setSaveError("");
     try {
-      const updated = await updateUsuario(user._id, { nombre: nombre.trim() });
-      updateUser(updated);
+      await updateProfile({ nombre: nombre.trim() });
       setSaveOk(true);
       setEditing(false);
       setTimeout(() => setSaveOk(false), 3000);
@@ -47,6 +50,60 @@ const Profile: React.FC = () => {
   };
 
   const isInstructor = user.rol === "instructor";
+
+  useEffect(() => {
+    if (!user) return;
+    let active = true;
+
+    const loadStats = async () => {
+      try {
+        if (isInstructor) {
+          const cursos = await getCursos({ instructorId: user._id });
+          const inscripciones = await getInscripciones();
+          const myEnrollments = inscripciones.filter(i => cursos.some(c => c._id === i.cursoId));
+          const uniqueStudents = new Set(myEnrollments.map(i => i.usuarioId));
+          const comentarios = await getComentarios();
+          const ratings = comentarios
+            .filter(c => cursos.some(curso => curso._id === c.cursoId) && typeof c.calificacion === "number")
+            .map(c => c.calificacion as number);
+          const averageRating = ratings.length
+            ? ratings.reduce((sum, value) => sum + value, 0) / ratings.length
+            : null;
+
+          if (!active) return;
+          setInstructorStats({
+            cursosCreados: cursos.length,
+            estudiantesTotales: uniqueStudents.size,
+            valoracionMedia: averageRating ? `${averageRating.toFixed(1)}★` : "Sin calificaciones",
+          });
+        } else {
+          const inscripciones = await getInscripciones({ usuarioId: user._id });
+          const resolved = await Promise.all(
+            inscripciones.map(async (ins) => ({
+              curso: await getCursoById(ins.cursoId),
+              inscripcion: ins,
+            }))
+          );
+
+          const cursosEnProgreso = resolved.filter(({ inscripcion }) => inscripcion.porcentajeProgreso > 0 && inscripcion.porcentajeProgreso < 100).length;
+          const cursosCompletados = resolved.filter(({ inscripcion }) => inscripcion.porcentajeProgreso >= 100).length;
+          const totalMinutes = resolved.reduce(
+            (sum, { curso, inscripcion }) => sum + curso.duracionTotal * (inscripcion.porcentajeProgreso / 100),
+            0
+          );
+          const horasAprendizaje = Math.round(totalMinutes / 60);
+
+          if (!active) return;
+          setStudentStats({ cursosEnProgreso, cursosCompletados, horasAprendizaje });
+        }
+      } catch {
+        // Si falla la carga de métricas, mantenemos los valores a cero.
+      }
+    };
+
+    loadStats();
+    return () => { active = false; };
+  }, [user, isInstructor]);
 
   return (
     <div style={{ minHeight: "100vh", background: "#f8fafc" }}>
@@ -264,15 +321,17 @@ const Profile: React.FC = () => {
                   {isInstructor ? "Tu actividad como instructor" : "Tu actividad como estudiante"}
                 </h5>
                 <Row className="g-3">
-                  {isInstructor ? [
-                    { label: "Cursos creados",    value: user.cursosCreados?.length ?? 0, color: "#7c3aed", bg: "#f5f3ff" },
-                    { label: "Estudiantes totales", value: "—",                           color: "#f59e0b", bg: "#fffbeb" },
-                    { label: "Valoración media",   value: "4.8★",                         color: "#22c55e", bg: "#f0fdf4" },
-                  ] : [
-                    { label: "Cursos en progreso", value: "—", color: "#3b82f6", bg: "#eff6ff" },
-                    { label: "Cursos completados", value: "—", color: "#22c55e", bg: "#f0fdf4" },
-                    { label: "Horas de aprendizaje", value: "—", color: "#f59e0b", bg: "#fffbeb" },
-                  ].map(({ label, value, color, bg }) => (
+                  {(
+                    isInstructor ? [
+                      { label: "Cursos creados",    value: instructorStats.cursosCreados,     color: "#7c3aed", bg: "#f5f3ff" },
+                      { label: "Estudiantes totales", value: instructorStats.estudiantesTotales, color: "#f59e0b", bg: "#fffbeb" },
+                      { label: "Valoración media",   value: instructorStats.valoracionMedia,  color: "#22c55e", bg: "#f0fdf4" },
+                    ] : [
+                      { label: "Cursos en progreso",  value: studentStats.cursosEnProgreso,  color: "#3b82f6", bg: "#eff6ff" },
+                      { label: "Cursos completados",  value: studentStats.cursosCompletados, color: "#22c55e", bg: "#f0fdf4" },
+                      { label: "Horas de aprendizaje", value: `${studentStats.horasAprendizaje} h`, color: "#f59e0b", bg: "#fffbeb" },
+                    ]
+                  ).map(({ label, value, color, bg }) => (
                     <Col key={label} xs={4}>
                       <div className="text-center rounded-3 p-3" style={{ background: bg }}>
                         <div className="fw-bold" style={{ color, fontSize: "1.4rem" }}>{value}</div>

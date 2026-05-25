@@ -2,6 +2,15 @@ from pydantic import BaseModel
 from typing import Optional
 
 
+class Leccion(BaseModel):
+    _id: Optional[str] = None
+    titulo: str
+    videoUrl: str = ""
+    duracion: int = 0
+    orden: int = 1
+    recursos: list[str] = []
+
+
 class CursoCreate(BaseModel):
     titulo: str
     instructorId: str
@@ -10,6 +19,8 @@ class CursoCreate(BaseModel):
     precio: float = 0
     etiquetas: list[str] = []
     nivel: str = "Básico"
+    imagen: Optional[str] = None
+    lecciones: list[Leccion] = []
 
 
 class CursoUpdate(BaseModel):
@@ -21,3 +32,5 @@ class CursoUpdate(BaseModel):
     nivel: Optional[str] = None
     publicado: Optional[bool] = None
     duracionTotal: Optional[float] = None
+    imagen: Optional[str] = None
+    lecciones: Optional[list[Leccion]] = None

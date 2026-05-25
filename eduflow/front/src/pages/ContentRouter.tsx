@@ -8,6 +8,7 @@ import Register from "./Register";
 import Profile from "./Profile";
 import Settings from "./Settings";
 import CoursesPage from "./CoursesPage";
+import CourseDetail from "./CourseDetail";
 import StudentDashboard from "./Dashboard/StudentDashboard";
 import InstructorDashboard from "./Dashboard/InstructorDashboard";
 import ProtectedRoute from "../components/ProtectedRoute";
@@ -52,6 +53,9 @@ const ContentRouter: React.FC = () => {
           {userRole === "instructor" ? <InstructorDashboard /> : <StudentDashboard />}
         </ProtectedRoute>
       );
+
+    case "courseDetail":
+      return <CourseDetail />;
 
     case "profile":
       return (

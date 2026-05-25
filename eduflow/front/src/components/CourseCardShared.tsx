@@ -1,5 +1,5 @@
 import { useState, type FC } from "react";
-import { Card, Badge, Button } from "react-bootstrap";
+import { Card, Badge, Button, ProgressBar } from "react-bootstrap";
 import { PlayCircle, Star, Users, Clock, ArrowRight, BookOpen, Layers } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
 import type { Curso } from "../types/models";
@@ -52,7 +52,16 @@ export const SkeletonCard: FC = () => (
   </Card>
 );
 
-export const CourseCard: FC<{ course: Curso; rating?: number; students?: number; onDetail?: () => void; onEdit?: () => void }> = ({ course, rating: ratingProp, students = 0, onDetail, onEdit }) => {
+export const CourseCard: FC<{
+  course: Curso;
+  rating?: number;
+  students?: number;
+  onDetail?: () => void;
+  onEdit?: () => void;
+  progress?: number;
+  actionLabel?: string;
+  onAction?: () => void;
+}> = ({ course, rating: ratingProp, students = 0, onDetail, onEdit, progress, actionLabel, onAction }) => {
   const { userRole, user } = useAuth();
   const [hovered, setHovered] = useState(false);
   const [imgError, setImgError]  = useState(false);
@@ -66,6 +75,11 @@ export const CourseCard: FC<{ course: Curso; rating?: number; students?: number;
   const duration = durMins >= 60 ? `${Math.floor(durMins / 60)}h ${durMins % 60 > 0 ? `${durMins % 60}m` : ""}`.trim() : `${durMins}m`;
   const lecciones = course.totalLecciones ?? course.lecciones?.length ?? 0;
   const showImg  = !!course.imagen && !imgError;
+  const showProgress = typeof progress === "number";
+  const roundedProgress = showProgress ? Math.round(progress as number) : 0;
+  const isComplete = showProgress && roundedProgress >= 100;
+  const actionText = actionLabel ?? "Ver detalle";
+  const primaryAction = onAction ?? onDetail;
 
   return (
     <Card
@@ -144,6 +158,18 @@ export const CourseCard: FC<{ course: Curso; rating?: number; students?: number;
           )}
         </div>
 
+        {showProgress && (
+          <div className="mb-3">
+            <div className="d-flex justify-content-between align-items-center mb-2">
+              <span style={{ fontSize: "0.78rem", color: "#64748b" }}>Progreso</span>
+              <span style={{ fontSize: "0.78rem", fontWeight: 600, color: isComplete ? "#22c55e" : "#1565c0" }}>
+                {roundedProgress}%
+              </span>
+            </div>
+            <ProgressBar now={roundedProgress} style={{ height: 6, borderRadius: 99 }} variant={isComplete ? "success" : "primary"} />
+          </div>
+        )}
+
         <div className="d-flex justify-content-between align-items-center mt-auto gap-2">
           <span style={{ fontSize: "1.15rem", fontWeight: 700, color: "#0f172a" }}>
             {price}
@@ -154,7 +180,7 @@ export const CourseCard: FC<{ course: Curso; rating?: number; students?: number;
               type="button"
               size="sm"
               className="d-flex align-items-center gap-1 rounded-pill px-3"
-              onClick={onDetail}
+              onClick={primaryAction}
               style={{
                 fontSize: "0.82rem",
                 fontWeight: 600,
@@ -163,7 +189,7 @@ export const CourseCard: FC<{ course: Curso; rating?: number; students?: number;
                 transition: "background 0.2s",
               }}
             >
-              Ver detalle <ArrowRight size={13} />
+              {actionText} <ArrowRight size={13} />
             </Button>
             {canEdit && onEdit && (
               <Button

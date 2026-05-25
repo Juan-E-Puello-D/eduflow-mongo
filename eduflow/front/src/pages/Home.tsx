@@ -10,7 +10,7 @@ import { CourseCard, SkeletonCard, type CourseWithRating } from "../components/C
 const Home: FC = () => {
   const [topCourses, setTopCourses] = useState<CourseWithRating[]>([]);
   const [loading, setLoading] = useState(true);
-  const { setActiveTab } = useAuth();
+  const { setActiveTab, setSelectedCourseId } = useAuth();
 
   useEffect(() => {
     Promise.all([getCursos(), getComentarios(), getStudentCounts()])
@@ -153,7 +153,15 @@ const Home: FC = () => {
           <Row className="g-4">
             {topCourses.map((c) => (
               <Col key={c._id} md={4}>
-                <CourseCard course={c} rating={c.rating} students={c.students} />
+                <CourseCard
+                  course={c}
+                  rating={c.rating}
+                  students={c.students}
+                  onDetail={() => {
+                    setSelectedCourseId(c._id);
+                    setActiveTab("courseDetail");
+                  }}
+                />
               </Col>
             ))}
           </Row>
